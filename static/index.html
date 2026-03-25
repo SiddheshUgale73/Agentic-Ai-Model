@@ -1,236 +1,70 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Student Enquiry - AI Assistant</title>
-    <style>
-        :root {
-            --primary: #4f46e5;
-            --primary-hover: #4338ca;
-            --bg: #f3f4f6;
-            --white: #ffffff;
-            --text-main: #1f2937;
-            --text-muted: #6b7280;
-            --border: #e5e7eb;
-        }
-
-        body {
-            font-family: 'Inter', -apple-system, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: var(--bg);
-            color: var(--text-main);
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
-        }
-
-        header {
-            background-color: var(--white);
-            padding: 1rem 2rem;
-            border-bottom: 1px solid var(--border);
-            text-align: center;
-        }
-
-        header h1 {
-            margin: 0;
-            font-size: 1.25rem;
-            font-weight: 700;
-            color: var(--primary);
-        }
-
-        main {
-            flex: 1;
-            display: flex;
-            justify-content: center;
-            align-items: flex-start;
-            padding: 2rem;
-        }
-
-        .chat-container {
-            background-color: var(--white);
-            width: 100%;
-            max-width: 600px;
-            border-radius: 1rem;
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-            display: flex;
-            flex-direction: column;
-            overflow: hidden;
-            border: 1px solid var(--border);
-        }
-
-        .chat-header {
-            padding: 1.5rem;
-            border-bottom: 1px solid var(--border);
-            background-color: #f9fafb;
-        }
-
-        .chat-header h2 {
-            margin: 0;
-            font-size: 1rem;
-            color: var(--text-muted);
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-        }
-
-        .chat-box {
-            padding: 1.5rem;
-            min-height: 100px;
-            max-height: 400px;
-            overflow-y: auto;
-            border-bottom: 1px solid var(--border);
-        }
-
-        .message {
-            margin-bottom: 1rem;
-        }
-
-        .message.bot {
-            background-color: #f3f4f6;
-            padding: 1rem;
-            border-radius: 0.5rem;
-            font-size: 0.95rem;
-            line-height: 1.5;
-            white-space: pre-wrap;
-        }
-
-        .chat-input-area {
-            padding: 1.5rem;
-            display: flex;
-            gap: 0.75rem;
-        }
-
-        input[type="text"] {
-            flex: 1;
-            padding: 0.75rem 1rem;
-            border: 1px solid var(--border);
-            border-radius: 0.5rem;
-            outline: none;
-            transition: border-color 0.2s;
-        }
-
-        input[type="text"]:focus {
-            border-color: var(--primary);
-        }
-
-        button {
-            background-color: var(--primary);
-            color: white;
-            border: none;
-            padding: 0.75rem 1.5rem;
-            border-radius: 0.5rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: background-color 0.2s;
-        }
-
-        button:hover {
-            background-color: var(--primary-hover);
-        }
-
-        button:disabled {
-            background-color: var(--border);
-            cursor: not-allowed;
-        }
-
-        .loading {
-            font-style: italic;
-            color: var(--text-muted);
-        }
-    </style>
+    <title>VANT AI Academy | Master the Future</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
-
 <body>
+
     <header>
-        <h1>Institute AI Counselor</h1>
+        <a href="#" class="logo">VANT AI ACADEMY</a>
+        <nav class="nav-links">
+            <a href="#home">Home</a>
+            <a href="#courses">Courses</a>
+            <a href="#about">About</a>
+            <a href="admin.html">Admin</a>
+        </nav>
     </header>
 
     <main>
-        <div class="chat-container">
-            <div class="chat-header">
-                <h2>Counseling Session</h2>
+        <section id="home" class="hero">
+            <h1>Master the Future of <br>AI & Coding</h1>
+            <p>Accelerate your career with agentic AI training, expert placement counseling, and industry-ready skills.</p>
+            <div class="hero-btns">
+                <a href="#courses" class="btn-primary">Explore Courses</a>
             </div>
-            <div class="chat-box" id="output-box">
-                <div class="message bot">Hello! I'm your Institute Counselor. I can help you find courses, check schedules, and even enroll you. What's your background or interest?</div>
+        </section>
+
+        <!-- Course Section dynamic loading -->
+        <section id="courses" style="padding: 100px 10%; background: #020617;">
+            <h2 style="text-align: center; font-size: 2.5rem; margin-bottom: 50px;">Featured Programs</h2>
+            <div id="course-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px;">
+                <!-- Dynamically populated -->
             </div>
-            <div class="chat-input-area">
-                <input type="text" id="user-input" placeholder="Chat with counselor..." autocomplete="off">
-                <button id="send-btn">Send</button>
-            </div>
-        </div>
+        </section>
+
     </main>
 
-    <script>
-        const input = document.getElementById('user-input');
-        const btn = document.getElementById('send-btn');
-        const output = document.getElementById('output-box');
+    <!-- Chat Widget Integration -->
+    <div id="chat-widget-container">
+        <div id="chat-bubble">
+            <i class="fas fa-comment-dots" style="color: white; font-size: 1.5rem;"></i>
+        </div>
+        
+        <div id="chat-window" class="glass">
+            <div class="chat-header">
+                <h4 style="margin: 0;">AI Counselor</h4>
+                <small style="opacity: 0.8;">Online & Ready to help</small>
+            </div>
+            
+            <div class="chat-body" id="chat-messages">
+                <!-- Messages will sync here -->
+            </div>
+            
+            <div class="chat-footer">
+                <div style="display: flex; gap: 10px;">
+                    <input type="text" id="chat-input" placeholder="Ask about courses, fees..." style="flex: 1; padding: 10px; border-radius: 10px; border: none; background: rgba(255,255,255,0.1); color: white; outline: none;">
+                    <button id="chat-send" style="background: var(--primary); border: none; color: white; padding: 8px 15px; border-radius: 10px; cursor: pointer;">
+                        <i class="fas fa-paper-plane"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
 
-        // Generate or retrieve session_id
-        let sessionId = localStorage.getItem('agent_session_id');
-        if (!sessionId) {
-            sessionId = 'session_' + Math.random().toString(36).substr(2, 9);
-            localStorage.setItem('agent_session_id', sessionId);
-        }
-
-        async function askQuestion() {
-            const question = input.value.trim();
-            if (!question) return;
-
-            // Log user question
-            const userMsg = document.createElement('div');
-            userMsg.style.textAlign = 'right';
-            userMsg.style.marginBottom = '1rem';
-            userMsg.innerHTML = `<span style="background:var(--primary);color:white;padding:0.5rem 1rem;border-radius:0.5rem;display:inline-block;">${question}</span>`;
-            output.appendChild(userMsg);
-
-            input.value = '';
-            btn.disabled = true;
-
-            // Loading state
-            const loadingMsg = document.createElement('div');
-            loadingMsg.className = 'message bot loading';
-            loadingMsg.textContent = 'Counselor is thinking...';
-            output.appendChild(loadingMsg);
-            output.scrollTop = output.scrollHeight;
-
-            try {
-                const response = await fetch('/agent/chat', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ 
-                        question: question,
-                        session_id: sessionId
-                    })
-                });
-
-                const data = await response.json();
-                output.removeChild(loadingMsg);
-
-                const botMsg = document.createElement('div');
-                botMsg.className = 'message bot';
-                botMsg.textContent = data.answer || "I'm sorry, I couldn't process that. Please try again.";
-                output.appendChild(botMsg);
-
-            } catch (error) {
-                if (loadingMsg.parentNode) output.removeChild(loadingMsg);
-                const errorMsg = document.createElement('div');
-                errorMsg.className = 'message bot';
-                errorMsg.style.color = 'red';
-                errorMsg.textContent = 'Error connecting to the Counselor. Please try again.';
-                output.appendChild(errorMsg);
-            } finally {
-                btn.disabled = false;
-                output.scrollTop = output.scrollHeight;
-            }
-        }
-
-        btn.addEventListener('click', askQuestion);
-        input.addEventListener('keypress', (e) => {
-            if (e.key === 'Enter') askQuestion();
-        });
-    </script>
+    <script src="js/chatbot.js"></script>
 </body>
-
 </html>

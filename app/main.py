@@ -31,6 +31,19 @@ app.add_middleware(
 
 # --- Endpoints ---
 
+import csv
+
+@app.get("/api/courses")
+async def get_courses():
+    """Returns the list of courses from the CSV database."""
+    courses = []
+    if os.path.exists("data/courses.csv"):
+        with open("data/courses.csv", mode='r', encoding='utf-8') as f:
+            reader = csv.DictReader(f)
+            for row in reader:
+                courses.append(row)
+    return courses
+
 @app.post("/upload", response_model=UploadResponse)
 async def upload_document(background_tasks: BackgroundTasks, file: UploadFile = File(...)):
     """Admin uploads a file for indexing."""
