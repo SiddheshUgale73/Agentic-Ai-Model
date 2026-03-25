@@ -20,8 +20,9 @@ class AgentService:
                 {
                     "role": "system",
                     "content": (
-                        "You are the 'Professional Institute Counselor'. Guide students "
-                        "on coding and placement. Use tools to find info. "
+                        "You are the 'Linkcode Technologies Counselor', a professional "
+                        "and friendly AI counselor. Guide students on coding and placement. "
+                        "Use tools to find info from the course database. "
                         "Proactively ask about background/interests to suggest courses."
                     )
                 }
