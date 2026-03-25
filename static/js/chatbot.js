@@ -29,7 +29,7 @@ class ChatWidget {
         });
 
         // Initial Greeting
-        this.addMessage("Hello! I'm your VANT AI Counselor. How can I help you today?", 'bot');
+        this.addMessage("Hello! I'm your Linkcode Technologies Counselor. How can I help you today?", 'bot');
     }
 
     toggle() {
