@@ -157,7 +157,7 @@ class ChatWidget {
             </div>
             <div style="display: flex; gap: 15px;">
                 <button id="enroll-btn" class="btn-primary" style="border: none; cursor: pointer; flex: 1;">Enroll Now</button>
-                <button onclick="document.getElementById('course-modal').style.display='none'" class="glass" style="flex: 1; padding: 10px; border-radius: 99px; color: white; border: 1px solid var(--glass-border);">Close</button>
+                <button onclick="document.getElementById('course-modal').style.display='none'" class="glass" style="flex: 1; padding: 10px; border-radius: 99px; color: var(--text-main); border: 1px solid var(--glass-border);">Close</button>
             </div>
         `;
         
