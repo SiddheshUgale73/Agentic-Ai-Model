@@ -57,7 +57,7 @@ class ChatWidget {
             max-width: 85%;
             font-size: 0.9rem;
             margin-bottom: 8px;
-            ${role === 'user' ? 'align-self: flex-end; background: var(--primary); color: white;' : 'align-self: flex-start; background: var(--glass); border: 1px solid var(--glass-border); color: white;'}
+            ${role === 'user' ? 'align-self: flex-end; background: var(--primary); color: white;' : 'align-self: flex-start; background: var(--glass); border: 1px solid var(--glass-border); color: var(--text-main);'}
             animation: fadeInUp 0.3s ease;
         `;
         msgDiv.textContent = text;
