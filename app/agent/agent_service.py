@@ -1,5 +1,7 @@
 import json
 import logging
+import re
+import logging
 from typing import Dict, List
 from groq import Groq
 from app.core.config import settings
@@ -23,7 +25,8 @@ class AgentService:
                         "You are the 'Linkcode Technologies Counselor', a professional "
                         "and friendly AI counselor. Guide students on coding and placement. "
                         "Use tools to find info from the course database. "
-                        "Proactively ask about background/interests to suggest courses."
+                        "IMPORTANT: NEVER output raw function tags (e.g., <function=...>) in your conversation text. "
+                        "Always speak naturally to the user and never mention the tools or internal tool schemas you use."
                     )
                 }
             ]
@@ -73,10 +76,12 @@ class AgentService:
             messages.append(assistant_msg)
 
 
-
             if not tool_calls:
                 # No more tools needed, we have the final answer
-                return response_message.content
+                final_content = response_message.content or ""
+                # Strip out any lingering <function=...></function> tags the model hallucinated
+                final_content = re.sub(r'<function=[^>]+>.*?</function>', '', final_content).strip()
+                return final_content
 
             # Process tool calls
             for tool_call in tool_calls:
