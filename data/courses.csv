@@ -1,9 +1,9 @@
-course_id,name,base_fee,duration_months,schedule,format,status,placement_assurance
-C001,Python Full Stack Web Development,35000,6,Mon-Fri: 10:00 AM - 1:00 PM,Online & Offline,OPEN,Yes
-C002,Data Science & AI Masterclass,45000,6,Sat-Sun: 2:00 PM - 6:00 PM,Hybrid,OPEN,Yes
-C003,Java Backend Specialization,30000,4,Mon-Wed-Fri: 7:00 PM - 9:00 PM,Online,OPEN,Yes
-C004,UI/UX Design Bootcamp,25000,3,Tue-Thu: 4:00 PM - 6:00 PM,Offline,WAITLISTED,No
-C005,Cyber Security Essentials,40000,5,Mon-Fri: 8:00 AM - 10:00 AM,Online,OPEN,Yes
-C006,Machine Learning Professional,50000,6,Sat-Sun: 10:00 AM - 2:00 PM,Offline,OPEN,Yes
-C007,React Native Mobile Dev,28000,3,Mon-Fri: 6:00 PM - 8:00 PM,Online,WAITLISTED,Yes
-C008,Cloud Computing (AWS/Azure),42000,4,Sun Only: 9:00 AM - 5:00 PM,Online,OPEN,Yes
+course_id,name,base_fee,duration_months,status,batch_timings,format,rating,description
+PY-001,Python Full Stack Web Development,35000,6,OPEN,Mon-Fri: 10:00 AM - 12:00 PM,Online & Offline,4.9,Master the entire web stack from database to frontend with industry projects.
+DS-002,Data Science & AI Masterclass,45000,6,OPEN,Sat-Sun: 2:00 PM - 6:00 PM,Hybrid,4.8,Dive deep into statistics, machine learning, and generative AI models.
+JV-003,Java Backend Specialization,30000,4,OPEN,Mon-Fri: 6:00 PM - 8:00 PM,Online,4.7,Build robust and scalable enterprise-grade backend systems using Spring Boot.
+UI-004,UI/UX Design Bootcamp,25000,3,WAITLISTED,Tue-Thu: 11:00 AM - 1:00 PM,Online,4.8,Craft stunning user experiences and high-fidelity prototypes using Figma.
+CS-005,Cyber Security Essentials,40000,5,OPEN,Mon-Fri: 8:00 AM - 10:00 AM,Online,4.9,Protect networks and systems from digital threats with advanced security protocols.
+ML-006,Machine Learning Professional,50000,6,OPEN,Sat-Sun: 9:00 AM - 1:00 PM,Online,4.9,Implement complex neural networks and predictive models for real-world data.
+CL-007,Cloud Computing (AWS/Azure),38000,4,OPEN,Mon-Wed: 7:00 PM - 9:00 PM,Online,4.7,Architect and deploy scalable cloud infrastructure on leading platforms.
+ST-008,Software Testing (Manual & Automation),22000,3,OPEN,Mon-Fri: 4:00 PM - 6:00 PM,Hybrid,4.7,Ensure software quality with industry-standard testing frameworks and tools.
