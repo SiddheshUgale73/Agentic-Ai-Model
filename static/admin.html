@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - Document Upload</title>
+    <style>
+        :root {
+            --primary: #4f46e5;
+            --primary-hover: #4338ca;
+            --bg: #f9fafb;
+            --card-bg: #ffffff;
+            --text: #111827;
+            --text-secondary: #4b5563;
+            --border: #e5e7eb;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            background-color: var(--card-bg);
+            padding: 2rem;
+            border-radius: 0.75rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            width: 100%;
+            max-width: 400px;
+            text-align: center;
+            border: 1px solid var(--border);
+        }
+
+        h1 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        p {
+            color: var(--text-secondary);
+            font-size: 0.875rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .upload-area {
+            border: 2px dashed var(--border);
+            padding: 2rem;
+            border-radius: 0.5rem;
+            margin-bottom: 1rem;
+            transition: border-color 0.2s;
+        }
+
+        .upload-area:hover {
+            border-color: var(--primary);
+        }
+
+        input[type="file"] {
+            display: none;
+        }
+
+        label {
+            display: block;
+            cursor: pointer;
+            color: var(--primary);
+            font-weight: 500;
+        }
+
+        button {
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.375rem;
+            font-weight: 600;
+            width: 100%;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        button:hover {
+            background-color: var(--primary-hover);
+        }
+
+        button:disabled {
+            background-color: var(--border);
+            cursor: not-allowed;
+        }
+
+        #status {
+            margin-top: 1rem;
+            font-size: 0.875rem;
+            padding: 0.75rem;
+            border-radius: 0.375rem;
+            display: none;
+        }
+
+        .success {
+            background-color: #ecfdf5;
+            color: #065f46;
+            display: block !important;
+        }
+
+        .error {
+            background-color: #fef2f2;
+            color: #991b1b;
+            display: block !important;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Admin Dashboard</h1>
+        <p>Upload documents (PDF, Docx, Excel, TXT) to update the knowledge base.</p>
+        
+        <div class="upload-area" id="drop-area">
+            <input type="file" id="file-input" accept=".pdf,.docx,.xlsx,.xls,.txt">
+            <label for="file-input" id="file-label">Click to select or drag a file</label>
+            <div id="file-name" style="margin-top: 0.5rem; font-size: 0.75rem; color: var(--text-secondary);"></div>
+        </div>
+
+        <button id="upload-btn" disabled>Upload Document</button>
+        <div id="status"></div>
+    </div>
+
+    <script>
+        const fileInput = document.getElementById('file-input');
+        const fileLabel = document.getElementById('file-label');
+        const fileNameDiv = document.getElementById('file-name');
+        const uploadBtn = document.getElementById('upload-btn');
+        const statusDiv = document.getElementById('status');
+
+        fileInput.addEventListener('change', (e) => {
+            if (e.target.files.length > 0) {
+                const file = e.target.files[0];
+                fileNameDiv.textContent = file.name;
+                uploadBtn.disabled = false;
+            } else {
+                fileNameDiv.textContent = '';
+                uploadBtn.disabled = true;
+            }
+        });
+
+        uploadBtn.addEventListener('click', async () => {
+            const file = fileInput.files[0];
+            if (!file) return;
+
+            const formData = new FormData();
+            formData.append('file', file);
+
+            uploadBtn.disabled = true;
+            uploadBtn.textContent = 'Uploading...';
+            statusDiv.className = '';
+            statusDiv.textContent = '';
+
+            try {
+                const response = await fetch('/upload', {
+                    method: 'POST',
+                    body: formData
+                });
+
+                const result = await response.json();
+
+                if (response.ok) {
+                    statusDiv.textContent = 'Success: ' + result.message;
+                    statusDiv.className = 'success';
+                    fileInput.value = '';
+                    fileNameDiv.textContent = '';
+                    uploadBtn.textContent = 'Upload Document';
+                } else {
+                    throw new Error(result.detail || 'Upload failed');
+                }
+            } catch (error) {
+                statusDiv.textContent = 'Error: ' + error.message;
+                statusDiv.className = 'error';
+                uploadBtn.disabled = false;
+                uploadBtn.textContent = 'Upload Document';
+            }
+        });
+    </script>
+</body>
+</html>

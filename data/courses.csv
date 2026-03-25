@@ -1,0 +1,9 @@
+course_id,name,base_fee,duration_months,schedule,format,status,placement_assurance
+C001,Python Full Stack Web Development,35000,6,Mon-Fri: 10:00 AM - 1:00 PM,Online & Offline,OPEN,Yes
+C002,Data Science & AI Masterclass,45000,6,Sat-Sun: 2:00 PM - 6:00 PM,Hybrid,OPEN,Yes
+C003,Java Backend Specialization,30000,4,Mon-Wed-Fri: 7:00 PM - 9:00 PM,Online,OPEN,Yes
+C004,UI/UX Design Bootcamp,25000,3,Tue-Thu: 4:00 PM - 6:00 PM,Offline,WAITLISTED,No
+C005,Cyber Security Essentials,40000,5,Mon-Fri: 8:00 AM - 10:00 AM,Online,OPEN,Yes
+C006,Machine Learning Professional,50000,6,Sat-Sun: 10:00 AM - 2:00 PM,Offline,OPEN,Yes
+C007,React Native Mobile Dev,28000,3,Mon-Fri: 6:00 PM - 8:00 PM,Online,WAITLISTED,Yes
+C008,Cloud Computing (AWS/Azure),42000,4,Sun Only: 9:00 AM - 5:00 PM,Online,OPEN,Yes

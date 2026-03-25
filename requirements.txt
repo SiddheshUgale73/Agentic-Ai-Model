@@ -1,0 +1,13 @@
+fastapi
+uvicorn
+python-multipart
+python-dotenv
+groq
+faiss-cpu
+sentence-transformers
+pydantic-settings
+PyPDF2
+openpyxl
+pandas
+python-docx
+numpy
