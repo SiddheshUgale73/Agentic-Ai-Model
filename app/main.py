@@ -80,10 +80,12 @@ async def agent_chat(request: QueryRequest):
 
 # --- Error Handling ---
 
+import traceback
+
 @app.exception_handler(Exception)
 async def global_exception_handler(request: Request, exc: Exception):
     logger.error(f"Error: {str(exc)}", exc_info=True)
-    return JSONResponse(status_code=500, content={"detail": "Internal Server Error"})
+    return JSONResponse(status_code=500, content={"detail": str(exc), "traceback": traceback.format_exc()})
 
 # --- Static Files ---
 
