@@ -6,12 +6,9 @@ This project provides a clean FastAPI-based backend for a training institute's e
 
 - `app/`: Core application logic.
     - `main.py`: Entry point of the FastAPI application.
-    - `api/`: API route definitions.
-        - `endpoints/`: Admin and Student dashboard logic.
-    - `core/`: Configurations and security settings.
-    - `services/`: Business logic (RAG, File Processing, Embeddings).
-    - `models/`: Pydantic models for API data validation.
-    - `db/`: Logic for managing FAISS vector indices.
+    - `agent.py`: Agentic AI Counselor logic (ReAct loop, Conversation Memory, Tool bindings).
+    - `services.py`: Backend services containing RAG, LLM inference, embedding, and environment settings.
+    - `schemas.py`: Pydantic models for API data validation.
 - `data/`: Persistence layer.
     - `uploads/`: Original files (PDF, Word, etc.).
     - `vectors/`: Saved FAISS indices.
