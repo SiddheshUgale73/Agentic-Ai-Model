@@ -1,7 +1,6 @@
 import json
 import logging
 import re
-import logging
 from typing import Dict, List
 from groq import Groq
 from app.core.config import settings
