@@ -8,10 +8,9 @@ from pydantic import BaseModel
 from typing import List
 
 # Import simplified service
-from app.models.schemas import QueryRequest, QueryResponse, UploadResponse
-from app.services import rag_pipeline
-from app.core.config import settings
-from app.agent.agent_service import agent_service
+from app.schemas import QueryRequest, QueryResponse, UploadResponse
+from app.services import rag_pipeline, settings
+from app.agent import agent_service
 
 # Setup logging
 logging.basicConfig(level=logging.INFO)
