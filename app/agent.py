@@ -317,9 +317,12 @@ class AgentService:
             if not tool_calls:
                 # No more tools needed, we have the final answer
                 final_content = response_message.content or ""
-                # Strip out any lingering tool tags the model hallucinated
+                # Strip out full hallucinated tool call blocks
                 final_content = re.sub(r'<?\bfunction=[^>]+>.*?<[^>]*function>', '', final_content, flags=re.DOTALL)
-                final_content = re.sub(r'<function=[^>]+>.*?</function>', '', final_content, flags=re.DOTALL).strip()
+                final_content = re.sub(r'<function=[^>]+>.*?</function>', '', final_content, flags=re.DOTALL)
+                # Strip out any remaining orphaned or unclosed tags like <function=enroll_student>
+                final_content = re.sub(r'<?\bfunction=[^>]+>', '', final_content)
+                final_content = final_content.replace(' .', '.').strip()
                 return final_content
 
             # Process tool calls
