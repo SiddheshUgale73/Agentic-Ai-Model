@@ -8,7 +8,7 @@ class ChatWidget {
         this.sendBtn = document.getElementById('chat-send');
         this.messagesContainer = document.getElementById('chat-messages');
         this.sessionId = localStorage.getItem('chat_session_id') || this.generateSessionId();
-        
+
         this.init();
     }
 
@@ -21,7 +21,7 @@ class ChatWidget {
     init() {
         // Toggle Chat
         this.bubble.addEventListener('click', () => this.toggle());
-        
+
         // Send Message
         this.sendBtn.addEventListener('click', () => this.sendMessage());
         this.input.addEventListener('keypress', (e) => {
@@ -36,8 +36,32 @@ class ChatWidget {
             if (event.target == modal) modal.style.display = 'none';
         };
 
-        // Initial Greeting
-        this.addMessage("Hello! I'm your Linkcode Technologies Counselor. How can I help you today?", 'bot');
+        // Add Close Button Events
+        const chatCloseBtn = document.querySelector('.close-chat-btn');
+        if (chatCloseBtn) chatCloseBtn.addEventListener('click', () => this.toggle(false));
+
+        // Submit Intake Form
+        const intakeForm = document.getElementById('intake-form');
+        if (intakeForm) {
+            intakeForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const msg = document.getElementById('intake-msg').value.trim();
+
+                // Switch Screens
+                document.getElementById('chat-screen-intake').style.display = 'none';
+                document.getElementById('chat-screen-active').style.display = 'flex';
+
+                // Add Initial Bot Message matching original screenshot
+                this.addMessage("Welcome to Linkcode Technologies. We are happy to help you.", 'bot');
+
+                if (msg) {
+                    this.sendMessage(msg);
+                }
+            });
+        }
+
+        // Disable initial trigger since we do it on form submit now
+        // this.addMessage("Hello! I'm your Linkcode Technologies Counselor. How can I help you today?", 'bot');
     }
 
     toggle(forceOpen = false) {
@@ -52,14 +76,23 @@ class ChatWidget {
         const msgDiv = document.createElement('div');
         msgDiv.className = `message ${role}`;
         msgDiv.style.cssText = `
-            padding: 10px 15px;
-            border-radius: 15px;
-            max-width: 85%;
-            font-size: 0.9rem;
-            margin-bottom: 8px;
-            ${role === 'user' ? 'align-self: flex-end; background: var(--primary); color: white;' : 'align-self: flex-start; background: var(--glass); border: 1px solid var(--glass-border); color: var(--text-main);'}
+            padding: 12px 18px;
+            border-radius: ${role === 'user' ? '18px 18px 4px 18px' : '4px 18px 18px 18px'};
+            max-width: 80%;
+            font-size: 0.95rem;
+            margin-bottom: 2px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.04);
+            ${role === 'user' ? 'align-self: flex-end; background: var(--chat-primary); color: white;' : 'align-self: flex-start; background: #ffffff; color: var(--text-main); border: 1px solid var(--glass-border);'}
             animation: fadeInUp 0.3s ease;
         `;
+
+        // Add a subtle name label for user
+        if (role === 'user') {
+            const label = document.createElement('div');
+            label.textContent = "you";
+            label.style.cssText = 'align-self: flex-end; font-size: 0.75rem; color: var(--text-muted); margin-bottom: 2px; margin-right: 5px;';
+            this.messagesContainer.appendChild(label);
+        }
         msgDiv.textContent = text;
         this.messagesContainer.appendChild(msgDiv);
         this.messagesContainer.scrollTop = this.messagesContainer.scrollHeight;
@@ -82,9 +115,9 @@ class ChatWidget {
             const response = await fetch('/agent/chat', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ 
-                    question: query, 
-                    session_id: this.sessionId 
+                body: JSON.stringify({
+                    question: query,
+                    session_id: this.sessionId
                 })
             });
 
@@ -117,14 +150,14 @@ class ChatWidget {
     renderCourses(courses) {
         const container = document.getElementById('course-grid');
         if (!container) return;
-        
+
         container.innerHTML = '';
         courses.forEach(course => {
             const card = document.createElement('div');
             card.className = 'glass';
             card.style.cssText = 'padding: 30px; border-radius: 20px; transition: var(--transition); border: 1px solid var(--glass-border); cursor: pointer;';
             card.onclick = () => this.showModal(course);
-            
+
             card.innerHTML = `
                 <div class="rating-stars">
                     ${this.renderStars(course.rating)}
@@ -145,7 +178,7 @@ class ChatWidget {
     showModal(course) {
         const modal = document.getElementById('course-modal');
         const body = document.getElementById('modal-body');
-        
+
         body.innerHTML = `
             <h2>${course.name}</h2>
             <p class="modal-info-p">${course.description}</p>
@@ -160,13 +193,13 @@ class ChatWidget {
                 <button onclick="document.getElementById('course-modal').style.display='none'" class="glass" style="flex: 1; padding: 10px; border-radius: 99px; color: var(--text-main); border: 1px solid var(--glass-border);">Close</button>
             </div>
         `;
-        
+
         document.getElementById('enroll-btn').onclick = () => {
             modal.style.display = 'none';
             this.toggle(true);
             this.sendMessage(`I want to enroll in ${course.name}. Can you tell me the process and fees?`);
         };
-        
+
         modal.style.display = 'flex';
     }
 
@@ -194,7 +227,7 @@ class ChatWidget {
 document.addEventListener('DOMContentLoaded', () => {
     const chat = new ChatWidget();
     chat.fetchCourses(); // Load dynamic courses
-    
+
     // Header scroll effect
     window.addEventListener('scroll', () => {
         const header = document.querySelector('header');

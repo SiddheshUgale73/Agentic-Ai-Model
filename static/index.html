@@ -168,10 +168,55 @@
                     <span>support@linkcode.tech</span>
                 </div>
             </div>
-            <div class="contact-info">
-                <h3>Our Promise</h3>
-                <p style="color: var(--text-muted);">We provide industry-recognized certifications and 100% placement
-                    assistance to help you build a career you love.</p>
+            <div class="contact-form-container"
+                style="background: #fdfdfd; padding: 40px; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); border: 1px solid var(--glass-border);">
+                <h3 style="margin-bottom: 30px; letter-spacing: 1px; color: #212529; text-transform: uppercase;">CONTACT
+                    US</h3>
+                <form id="bottom-contact-form" style="display: flex; flex-direction: column; gap: 20px;">
+                    <div style="display: flex; align-items: center; justify-content: space-between;">
+                        <label style="width: 140px; font-weight: 700; color: #4a4a4a; font-size: 0.95rem;">Name <span
+                                style="color:#d93025;">*</span></label>
+                        <input type="text" required
+                            style="flex: 1; padding: 10px; border: 1px solid #ccc; border-radius: 3px; outline: none;">
+                    </div>
+                    <div style="display: flex; align-items: center; justify-content: space-between;">
+                        <label style="width: 140px; font-weight: 700; color: #4a4a4a; font-size: 0.95rem;">Email ID
+                            <span style="color:#d93025;">*</span></label>
+                        <input type="email" required
+                            style="flex: 1; padding: 10px; border: 1px solid #ccc; border-radius: 3px; outline: none;">
+                    </div>
+                    <div style="display: flex; align-items: center; justify-content: space-between;">
+                        <label style="width: 140px; font-weight: 700; color: #4a4a4a; font-size: 0.95rem;">Contact No
+                            <span style="color:#d93025;">*</span></label>
+                        <input type="tel" required
+                            style="flex: 1; padding: 10px; border: 1px solid #ccc; border-radius: 3px; outline: none;">
+                    </div>
+                    <div style="display: flex; align-items: center; justify-content: space-between;">
+                        <label style="width: 140px; font-weight: 700; color: #4a4a4a; font-size: 0.95rem;">Mode of
+                            Training <span style="color:#d93025;">*</span></label>
+                        <select required
+                            style="flex: 1; padding: 10px; border: 1px solid #ccc; border-radius: 3px; outline: none; background: white;">
+                            <option value="Online Training">Online Training</option>
+                            <option value="Offline Training">Offline Training</option>
+                        </select>
+                    </div>
+                    <div style="display: flex; align-items: center; justify-content: space-between;">
+                        <label
+                            style="width: 140px; font-weight: 700; color: #4a4a4a; font-size: 0.95rem;">Location</label>
+                        <input type="text"
+                            style="flex: 1; padding: 10px; border: 1px solid #ccc; border-radius: 3px; outline: none;">
+                    </div>
+                    <div style="display: flex; align-items: center; justify-content: space-between;">
+                        <label style="width: 140px; font-weight: 700; color: #4a4a4a; font-size: 0.95rem;">Course <span
+                                style="color:#d93025;">*</span></label>
+                        <input type="text" required
+                            style="flex: 1; padding: 10px; border: 1px solid #ccc; border-radius: 3px; outline: none;">
+                    </div>
+                    <div style="display: flex; justify-content: center; margin-top: 25px;">
+                        <button type="submit"
+                            style="background: #db4437; color: white; border: none; padding: 12px 35px; font-weight: 800; font-size: 1rem; border-radius: 3px; cursor: pointer; letter-spacing: 2px;">SUBMIT</button>
+                    </div>
+                </form>
             </div>
         </div>
         <div style="text-align: center; margin-top: 50px; color: var(--text-muted); font-size: 0.8rem;">
@@ -189,28 +234,129 @@
         </div>
     </div>
     <div id="chat-widget-container">
-        <div id="chat-bubble">
+        <div id="chat-bubble" style="background: var(--chat-primary);">
             <i class="fas fa-comment-dots" style="color: white; font-size: 1.5rem;"></i>
         </div>
 
-        <div id="chat-window" class="glass">
-            <div class="chat-header">
-                <h4 style="margin: 0;">AI Counselor</h4>
-                <small style="opacity: 0.8;">Online & Ready to help</small>
+        <div id="chat-window" class="glass"
+            style="padding: 0; background: #fff; border-radius: 12px; overflow: hidden; border: none; box-shadow: 0 10px 40px rgba(0,0,0,0.2);">
+            <!-- SCREEN 1: Welcome -->
+            <div id="chat-screen-welcome" style="display: flex; flex-direction: column; height: 100%;">
+                <div
+                    style="background: var(--chat-primary); height: 130px; position:relative; border-radius: 12px 12px 0 0;">
+                    <button class="close-chat-btn"
+                        style="position:absolute; right:15px; top:15px; background:none; border:none; color:white; font-size:1.5rem; cursor:pointer;">&times;</button>
+                </div>
+                <div style="flex:1; background:white; text-align:center; padding: 20px; position:relative;">
+                    <div
+                        style="width: 110px; height: 110px; background: white; border-radius: 50%; position:absolute; top: -55px; left: 50%; transform: translateX(-50%); box-shadow: 0 4px 10px rgba(0,0,0,0.1); display:flex; justify-content:center; align-items:center;">
+                        <img src="https://ui-avatars.com/api/?name=Linkcode+IT&color=ff5722&background=fff&font-size=0.33"
+                            alt="Logo" style="width: 80%; border-radius: 50%;">
+                    </div>
+
+                    <h3 style="margin-top: 65px; color: var(--text-main); font-size: 1.4rem; font-weight:600;">
+                        LinkcodeIT</h3>
+                    <p
+                        style="color: var(--text-main); font-size: 0.95rem; margin-top: 15px; margin-bottom: 40px; padding: 0 10px;">
+                        We are here to help you! Call or chat to connect with us right away.</p>
+
+                    <div style="display:flex; justify-content:center; gap: 50px; margin-bottom: 20px;">
+                        <div style="text-align:center; cursor:pointer;">
+                            <a href="tel:+919876543210" style="text-decoration:none; color:inherit;">
+                                <div
+                                    style="width:65px; height:65px; background:var(--chat-primary); border-radius:50%; display:flex; align-items:center; justify-content:center; margin-bottom:12px; color:white; font-size:1.6rem; box-shadow: 0 4px 15px rgba(255, 87, 34, 0.3); transition: transform 0.2s;">
+                                    <i class="fas fa-phone-alt"></i>
+                                </div>
+                                <span style="font-size: 1rem; color: var(--text-main);">Call</span>
+                            </a>
+                        </div>
+                        <div style="text-align:center; cursor:pointer;"
+                            onclick="document.getElementById('chat-screen-welcome').style.display='none'; document.getElementById('chat-screen-intake').style.display='flex';">
+                            <div
+                                style="width:65px; height:65px; background:var(--chat-primary); border-radius:50%; display:flex; align-items:center; justify-content:center; margin-bottom:12px; color:white; font-size:1.6rem; box-shadow: 0 4px 15px rgba(255, 87, 34, 0.3); transition: transform 0.2s;">
+                                <i class="fas fa-comment-dots"></i>
+                            </div>
+                            <span style="font-size: 1rem; color: var(--text-main);">Chat</span>
+                        </div>
+                    </div>
+                </div>
             </div>
 
-            <div class="chat-body" id="chat-messages">
-                <!-- Messages will sync here -->
+            <!-- SCREEN 2: Intake Form -->
+            <div id="chat-screen-intake" style="display: none; flex-direction: column; height: 100%; background: #fff;">
+                <div
+                    style="background: var(--chat-primary); padding: 25px 20px; color: white; display: flex; align-items: center; gap: 15px;">
+                    <i class="fas fa-chevron-left" style="cursor:pointer; font-size: 1.2rem;"
+                        onclick="document.getElementById('chat-screen-intake').style.display='none'; document.getElementById('chat-screen-welcome').style.display='flex';"></i>
+                    <div
+                        style="width: 45px; height: 45px; background: rgba(255,255,255,0.2); border-radius: 50%; display:flex; justify-content:center; align-items:center; font-weight:bold;">
+                        <img src="https://ui-avatars.com/api/?name=LC&color=fff&background=random"
+                            style="width:100%; border-radius:50%; mix-blend-mode: screen;">
+                    </div>
+                    <h3 style="margin:0; font-size:1.4rem; font-weight:600;">Chat with us now</h3>
+                </div>
+                <div
+                    style="flex: 1; padding: 25px 20px; overflow-y:auto; background:white; border-radius: 15px 15px 0 0; position:relative; top:-15px;">
+                    <form id="intake-form" style="display:flex; flex-direction:column; gap:18px;">
+                        <input type="text" id="intake-name" placeholder="Enter your last name"
+                            style="padding: 14px 15px; border: 1px solid var(--glass-border); border-radius: 8px; font-size:1rem; background: #f8f9fa; outline:none; color: var(--text-main);">
+                        <input type="email" id="intake-email" placeholder="Enter your email address (required)" required
+                            style="padding: 14px 15px; border: 1px solid #ffb3a1; border-left: 3px solid var(--chat-primary); border-radius: 8px; font-size:1rem; background: #f8f9fa; outline:none; color: var(--text-main);">
+                        <input type="tel" id="intake-phone" placeholder="Enter your phone number"
+                            style="padding: 14px 15px; border: 1px solid var(--glass-border); border-radius: 8px; font-size:1rem; background: #f8f9fa; outline:none; color: var(--text-main);">
+                        <textarea id="intake-msg" placeholder="Type your message and hit 'Enter'" required
+                            style="padding: 14px 15px; border: 1px solid var(--glass-border); border-radius: 8px; font-size:1rem; background: #f8f9fa; outline:none; color: var(--text-main); resize:none; height:100px; font-family: inherit;"></textarea>
+
+                        <div style="text-align:right; margin-top: 5px;">
+                            <button type="submit"
+                                style="background:none; border:none; color: #b0b0b0; font-weight:600; font-size:1.1rem; cursor:pointer; display:flex; align-items:center; justify-content:flex-end; gap:8px; width:100%;">
+                                <i class="fas fa-paper-plane"></i> Start Chat
+                            </button>
+                        </div>
+                    </form>
+                </div>
             </div>
 
-            <div class="chat-footer">
-                <div style="display: flex; gap: 10px;">
-                    <input type="text" id="chat-input" placeholder="Ask about courses, fees..."
-                        style="flex: 1; padding: 10px; border-radius: 10px; border: 1px solid var(--glass-border); background: var(--bg-main); color: var(--text-main); outline: none;">
-                    <button id="chat-send"
-                        style="background: var(--primary); border: none; color: white; padding: 8px 15px; border-radius: 10px; cursor: pointer;">
-                        <i class="fas fa-paper-plane"></i>
+            <!-- SCREEN 3: Active Chat -->
+            <div id="chat-screen-active" style="display: none; flex-direction: column; height: 100%;">
+                <div class="chat-header"
+                    style="background: var(--chat-primary); display:flex; align-items:center; justify-content:space-between; padding: 20px;">
+                    <div style="display:flex; align-items:center; gap: 15px;">
+                        <div
+                            style="width: 45px; height: 45px; background: rgba(255,255,255,0.2); border-radius: 50%; display:flex; justify-content:center; align-items:center;">
+                            <i class="fas fa-user" style="color:white; font-size:1.4rem;"></i>
+                        </div>
+                        <div>
+                            <h4 style="margin: 0; color:white; font-size:1.1rem; font-weight:600;">onlinetraining@lin...
+                            </h4>
+                        </div>
+                    </div>
+                    <button
+                        style="background:rgba(255,255,255,0.2); border:none; border-radius:50%; width:40px; height:40px; color:white; cursor:pointer; display:flex; justify-content:center; align-items:center; font-size: 1.1rem;">
+                        <i class="fas fa-phone-alt"></i>
                     </button>
+                </div>
+
+                <div class="chat-body" id="chat-messages"
+                    style="flex:1; background:#f8f9fa; padding:20px; overflow-y:auto; display:flex; flex-direction:column; gap:12px;">
+                    <!-- Messages will sync here -->
+                </div>
+
+                <div class="chat-footer"
+                    style="padding: 15px 20px; background: white; border-top: 1px solid var(--glass-border);">
+                    <div style="display: flex; gap: 10px; align-items:center;">
+                        <input type="text" id="chat-input" placeholder="Type your message and hit 'Enter'"
+                            style="flex: 1; padding: 0; border: none; background: transparent; color: var(--text-main); outline: none; font-size:1rem;">
+                        <button
+                            style="background:none; border:none; color:var(--text-muted); cursor:pointer; font-size:1.2rem;"><i
+                                class="fas fa-volume-up"></i></button>
+                        <button
+                            style="background:none; border:none; color:var(--text-muted); cursor:pointer; font-size:1.2rem;"><i
+                                class="fas fa-power-off"></i></button>
+                        <button id="chat-send"
+                            style="background: none; border: none; color: white; cursor: pointer; display:none;">
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>
