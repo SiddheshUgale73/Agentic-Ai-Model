@@ -217,7 +217,7 @@ class AgentService:
                         "You are the 'Linkcode Technologies Counselor', a professional "
                         "and friendly AI counselor. Guide students on coding and placement. "
                         "Use tools to find info from the course database. "
-                        "IMPORTANT: NEVER output raw function tags (e.g., <function=...>) in your conversation text. "
+                        "IMPORTANT: To use a tool, you MUST use the official tool calling API. NEVER output raw function tags (e.g., <function=...>, 'function=') in your text. "
                         "Always speak naturally to the user and never mention the tools or internal tool schemas you use."
                     )
                 }
@@ -271,8 +271,9 @@ class AgentService:
             if not tool_calls:
                 # No more tools needed, we have the final answer
                 final_content = response_message.content or ""
-                # Strip out any lingering <function=...></function> tags the model hallucinated
-                final_content = re.sub(r'<function=[^>]+>.*?</function>', '', final_content).strip()
+                # Strip out any lingering tool tags the model hallucinated
+                final_content = re.sub(r'<?\bfunction=[^>]+>.*?<[^>]*function>', '', final_content, flags=re.DOTALL)
+                final_content = re.sub(r'<function=[^>]+>.*?</function>', '', final_content, flags=re.DOTALL).strip()
                 return final_content
 
             # Process tool calls
