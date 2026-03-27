@@ -58,8 +58,8 @@ from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 
 def send_registration_email(student_name: str, course_name: str, to_email: str):
-    sender_email = os.environ.get("SENDER_EMAIL")
-    sender_password = os.environ.get("SENDER_PASSWORD")
+    sender_email = settings.SENDER_EMAIL
+    sender_password = settings.SENDER_PASSWORD
     
     if not sender_email or not sender_password:
         logger.warning(f"Email credentials not set. Would have sent confirmation to {to_email}")

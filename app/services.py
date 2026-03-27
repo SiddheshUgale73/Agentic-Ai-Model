@@ -23,6 +23,8 @@ class Settings(BaseSettings):
     DATA_DIR: str = "data"
     UPLOADS_DIR: str = "data/uploads"
     VECTORS_DIR: str = "data/vectors"
+    SENDER_EMAIL: Optional[str] = None
+    SENDER_PASSWORD: Optional[str] = None
 
     class Config:
         env_file = ".env"
