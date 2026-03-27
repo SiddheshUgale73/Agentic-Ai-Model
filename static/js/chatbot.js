@@ -20,7 +20,12 @@ class ChatWidget {
 
     init() {
         // Toggle Chat
-        this.bubble.addEventListener('click', () => this.toggle());
+        this.bubble.addEventListener('click', () => {
+            const badge = document.getElementById('chat-badge');
+            if (badge) badge.style.display = 'none'; // Hide badge when clicked
+            this.bubble.style.animation = 'none'; // Stop bounce
+            this.toggle();
+        });
 
         // Send Message
         this.sendBtn.addEventListener('click', () => this.sendMessage());
@@ -58,6 +63,15 @@ class ChatWidget {
                     this.sendMessage(msg);
                 }
             });
+
+            // Auto-notification after 5 seconds to grab user attention
+            setTimeout(() => {
+                if (!this.container.classList.contains('active')) {
+                    const badge = document.getElementById('chat-badge');
+                    if (badge) badge.style.display = 'block';
+                    this.bubble.style.animation = 'chatBounce 2s ease 2';
+                }
+            }, 5000);
         }
 
         // Disable initial trigger since we do it on form submit now

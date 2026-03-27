@@ -214,7 +214,9 @@
                     </div>
                     <div style="display: flex; justify-content: center; margin-top: 25px;">
                         <button type="submit"
-                            style="background: #db4437; color: white; border: none; padding: 12px 35px; font-weight: 800; font-size: 1rem; border-radius: 3px; cursor: pointer; letter-spacing: 2px;">SUBMIT</button>
+                            style="background: var(--primary); color: white; border: none; padding: 12px 35px; font-weight: 800; font-size: 1rem; border-radius: 3px; cursor: pointer; letter-spacing: 2px; transition: background 0.3s ease;"
+                            onmouseover="this.style.background='var(--primary-hover)'"
+                            onmouseout="this.style.background='var(--primary)'">SUBMIT</button>
                     </div>
                 </form>
             </div>
@@ -234,8 +236,11 @@
         </div>
     </div>
     <div id="chat-widget-container">
-        <div id="chat-bubble" style="background: var(--chat-primary);">
+        <div id="chat-bubble" style="background: var(--chat-primary); position: relative;">
             <i class="fas fa-comment-dots" style="color: white; font-size: 1.5rem;"></i>
+            <div id="chat-badge"
+                style="position: absolute; top: -2px; right: -2px; width: 14px; height: 14px; background: #e02424; border-radius: 50%; border: 2px solid white; display: none; animation: pulseDot 2s infinite;">
+            </div>
         </div>
 
         <div id="chat-window" class="glass"
@@ -347,14 +352,9 @@
                     <div style="display: flex; gap: 10px; align-items:center;">
                         <input type="text" id="chat-input" placeholder="Type your message and hit 'Enter'"
                             style="flex: 1; padding: 0; border: none; background: transparent; color: var(--text-main); outline: none; font-size:1rem;">
-                        <button
-                            style="background:none; border:none; color:var(--text-muted); cursor:pointer; font-size:1.2rem;"><i
-                                class="fas fa-volume-up"></i></button>
-                        <button
-                            style="background:none; border:none; color:var(--text-muted); cursor:pointer; font-size:1.2rem;"><i
-                                class="fas fa-power-off"></i></button>
                         <button id="chat-send"
-                            style="background: none; border: none; color: white; cursor: pointer; display:none;">
+                            style="background: none; border: none; color: var(--chat-primary); font-size:1.3rem; cursor: pointer;">
+                            <i class="fas fa-paper-plane"></i>
                         </button>
                     </div>
                 </div>

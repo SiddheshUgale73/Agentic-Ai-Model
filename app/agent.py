@@ -29,28 +29,43 @@ def _load_courses() -> List[Dict]:
             print(f"Error loading CSV: {e}")
     return courses
 
+import difflib
+
 def _find_course(query: str) -> Optional[Dict]:
     courses = _load_courses()
+    if not courses: return None
+    
     query_lower = query.lower()
-    # Try exact match first, then partial
+    # 1. Exact Name/ID Match
     for c in courses:
         if query_lower == c['name'].lower() or query_lower == c['course_id'].lower():
             return c
-    # Word-by-word intersection match (e.g., 'Python Web' matches 'Python Full Stack Web Development')
+            
+    # 2. Fuzzy Match on the entire name
+    names = [c['name'] for c in courses]
+    matches = difflib.get_close_matches(query, names, n=1, cutoff=0.6)
+    if matches:
+        return next(c for c in courses if c['name'] == matches[0])
+
+    # 3. Word-level Fuzzy Match (Best for 'Pyhthon' -> 'Python Full Stack...')
     query_words = query_lower.split()
+    best_match = None
+    highest_score = 0
+    
+    for c in courses:
+        name_words = c['name'].lower().split()
+        for qw in query_words:
+            # Check if query word is close to any word in the course name
+            word_matches = difflib.get_close_matches(qw, name_words, n=1, cutoff=0.7)
+            if word_matches:
+                return c # Found a strong word match
+                
+    # 4. Word-by-word intersection (Fallback)
     for c in courses:
         name_lower = c['name'].lower()
         if all(word in name_lower for word in query_words):
             return c
             
-    # Fallback to checking if any single long word matches (e.g. 'cyber' matches 'Cyber Security')
-    if len(query_words) > 0:
-        longest_word = max(query_words, key=len)
-        if len(longest_word) > 3:
-            for c in courses:
-                if longest_word in c['name'].lower():
-                    return c
-                    
     return None
 
 import smtplib
@@ -260,11 +275,13 @@ class AgentService:
                 {
                     "role": "system",
                     "content": (
-                        "You are the 'Linkcode Technologies Counselor', a professional "
-                        "and friendly AI counselor. Guide students on coding and placement. "
-                        "Use tools to find info from the course database. "
-                        "IMPORTANT: To use a tool, you MUST use the official tool calling API. NEVER output raw function tags (e.g., <function=...>, 'function=') in your text. "
-                        "Always speak naturally to the user and never mention the tools or internal tool schemas you use."
+                        "You are the 'Linkcode Technologies Lead AI Counselor'. "
+                        "Your goal is to provide official, accurate, and inspiring guidance to students. "
+                        "Always use tools to verify facts (fees, schedules, etc.) before answering. "
+                        "If a student seems interested, encourage them to enroll. "
+                        "Speak with authority but remain very friendly. "
+                        "IMPORTANT: Use the tool calling API only. NEVER output raw function tags. "
+                        "Keep responses structured and professional."
                     )
                 }
             ]

@@ -60,18 +60,19 @@ class FileProcessor:
             logger.error(f"Error processing {file_path}: {str(e)}")
             raise
 
-    def chunk_text(self, text: str, max_size: int = 150) -> List[str]:
+    def chunk_text(self, text: str, max_words: int = 150, overlap: int = 30) -> List[str]:
+        """Chunks text with a sliding window to maintain context overlap."""
         if not text: return []
         words = text.split()
-        chunks, current_chunk, current_len = [], [], 0
-        for word in words:
-            if current_len + len(word) + 1 > max_size * 5: # approx 5 chars per word
-                chunks.append(" ".join(current_chunk))
-                current_chunk, current_len = [word], len(word)
-            else:
-                current_chunk.append(word)
-                current_len += len(word) + 1
-        if current_chunk: chunks.append(" ".join(current_chunk))
+        if len(words) <= max_words:
+            return [" ".join(words)]
+        
+        chunks = []
+        for i in range(0, len(words), max_words - overlap):
+            chunk = words[i : i + max_words]
+            chunks.append(" ".join(chunk))
+            if i + max_words >= len(words):
+                break
         return chunks
 
 class VectorStore:
@@ -106,7 +107,7 @@ class VectorStore:
         with open(self.chunks_path, "w", encoding="utf-8") as f:
             json.dump(self.text_chunks, f, ensure_ascii=False)
 
-    def query(self, question: str, top_k: int = 3) -> List[str]:
+    def query(self, question: str, top_k: int = 5) -> List[str]:
         query_emb = self.model.encode([question], convert_to_numpy=True).astype('float32')
         _, indices = self.index.search(query_emb, top_k)
         return [self.text_chunks[idx] for idx in indices[0] if idx != -1 and idx < len(self.text_chunks)]
