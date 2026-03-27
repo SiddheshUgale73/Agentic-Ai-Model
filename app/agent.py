@@ -69,7 +69,7 @@ def get_course_status(course_name: str) -> str:
     """Checks if a specific course is currently open for admissions using the official course database."""
     course = _find_course(course_name)
     if course:
-        return f"The '{course['name']}' course status is: {course['status']}. Placement Assurance: {course['placement_assurance']}."
+        return f"The '{course['name']}' course status is: {course['status']}. Course Rating: {course['rating']}."
     else:
         # Fallback to search if not in CSV
         return f"I couldn't find an exact match for '{course_name}' in our primary list. Please check the main catalog or ask me for a list of courses."
@@ -78,7 +78,7 @@ def get_lecture_schedule(course_name: str) -> str:
     """Provides the exact batch timings and format (Online/Offline) for a specific course from the official database."""
     course = _find_course(course_name)
     if course:
-        return f"Schedule for '{course['name']}': {course['schedule']} (Format: {course['format']})."
+        return f"Schedule for '{course['name']}': {course['batch_timings']} (Format: {course['format']})."
     else:
         return f"No specific schedule found for '{course_name}'. Generally, batches run Mornings (8-10 AM) and Evenings (6-8 PM)."
 
