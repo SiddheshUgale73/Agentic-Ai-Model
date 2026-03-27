@@ -53,6 +53,37 @@ def _find_course(query: str) -> Optional[Dict]:
                     
     return None
 
+import smtplib
+from email.mime.text import MIMEText
+from email.mime.multipart import MIMEMultipart
+
+def send_registration_email(student_name: str, course_name: str, to_email: str):
+    sender_email = os.environ.get("SENDER_EMAIL")
+    sender_password = os.environ.get("SENDER_PASSWORD")
+    
+    if not sender_email or not sender_password:
+        logger.warning(f"Email credentials not set. Would have sent confirmation to {to_email}")
+        return
+        
+    try:
+        msg = MIMEMultipart()
+        msg['From'] = f"Linkcode Technologies <{sender_email}>"
+        msg['To'] = to_email
+        msg['Subject'] = f"Registration Successful: {course_name}"
+        
+        body = f"Hello {student_name},\n\nThis confirms your official registration for the '{course_name}' course at Linkcode Technologies!\n\nGet ready to Master the Future of Technology.\n\nBest Regards,\nThe Linkcode AI Counselor"
+        msg.attach(MIMEText(body, 'plain'))
+        
+        # Connect to Gmail SMTP (change if using another provider)
+        server = smtplib.SMTP('smtp.gmail.com', 587)
+        server.starttls()
+        server.login(sender_email, sender_password)
+        server.send_message(msg)
+        server.quit()
+        logger.info(f"Confirmation email successfully sent to {to_email}")
+    except Exception as e:
+        logger.error(f"Failed to send confirmation email: {e}")
+
 def _save_enrollment(data):
     if not os.path.exists("data"):
         os.makedirs("data")
@@ -122,6 +153,10 @@ def enroll_student(student_name: str, course_name: str, email: str) -> str:
         "date": datetime.datetime.now().isoformat()
     }
     _save_enrollment(enrollment_data)
+    
+    # Send actual email notification
+    send_registration_email(student_name, final_course_name, email)
+    
     return f"Registration SUCCESSFUL! {student_name}, you are now enrolled in the '{final_course_name}' course. A confirmation email has been sent to {email}."
 
 # --- Groq Metadata ---
