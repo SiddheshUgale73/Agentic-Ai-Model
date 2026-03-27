@@ -72,7 +72,7 @@ async def health():
     return {"status": "up"}
 
 @app.post("/agent/chat", response_model=QueryResponse)
-async def agent_chat(request: QueryRequest):
+def agent_chat(request: QueryRequest):
     """Interacts with the Institute Agent that uses tools and memory to answer."""
     answer = agent_service.run(request.question, session_id=request.session_id)
     return QueryResponse(answer=answer)
