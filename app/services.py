@@ -58,12 +58,12 @@ class FileProcessor:
             logger.error(f"Error processing {file_path}: {str(e)}")
             raise
 
-    def chunk_text(self, text: str, max_size: int = 500) -> List[str]:
+    def chunk_text(self, text: str, max_size: int = 150) -> List[str]:
         if not text: return []
         words = text.split()
         chunks, current_chunk, current_len = [], [], 0
         for word in words:
-            if current_len + len(word) + 1 > max_size:
+            if current_len + len(word) + 1 > max_size * 5: # approx 5 chars per word
                 chunks.append(" ".join(current_chunk))
                 current_chunk, current_len = [word], len(word)
             else:

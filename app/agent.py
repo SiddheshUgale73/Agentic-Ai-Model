@@ -36,10 +36,21 @@ def _find_course(query: str) -> Optional[Dict]:
     for c in courses:
         if query_lower == c['name'].lower() or query_lower == c['course_id'].lower():
             return c
-    # Partial match
+    # Word-by-word intersection match (e.g., 'Python Web' matches 'Python Full Stack Web Development')
+    query_words = query_lower.split()
     for c in courses:
-        if query_lower in c['name'].lower():
+        name_lower = c['name'].lower()
+        if all(word in name_lower for word in query_words):
             return c
+            
+    # Fallback to checking if any single long word matches (e.g. 'cyber' matches 'Cyber Security')
+    if len(query_words) > 0:
+        longest_word = max(query_words, key=len)
+        if len(longest_word) > 3:
+            for c in courses:
+                if longest_word in c['name'].lower():
+                    return c
+                    
     return None
 
 def _save_enrollment(data):
