@@ -839,97 +839,131 @@ header.scrolled {
     transform: rotate(180deg);
 }
 
-/* Alumni Success Cards */
-.alumni-section {
-    padding: 100px 10%;
-    background: #ffffff;
+/* --- ELITE REDESIGN: Tech Learning & Placement --- */
+
+/* Curriculum - Phase Badges & Explorer */
+.learning-tag {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 4px;
+    font-size: 0.7rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    margin-right: 8px;
+    letter-spacing: 1px;
 }
 
-.alumni-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 30px;
-    margin-top: 50px;
+.tag-lab { background: #EBF8FF; color: #3182CE; border: 1px solid #BEE3F8; }
+.tag-case { background: #F0FFF4; color: #38A169; border: 1px solid #C6F6D5; }
+.tag-skill { background: #FFF5F5; color: #E53E3E; border: 1px solid #FED7D7; }
+
+.curriculum-item {
+    border-left: 5px solid var(--primary);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.curriculum-item:hover {
+    transform: translateX(10px);
+}
+
+.curriculum-header h4 {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.curriculum-header i.status-icon {
+    font-size: 1rem;
+    color: var(--accent);
+}
+
+/* Placement - Wall of Success Redesign */
+.alumni-section {
+    background: linear-gradient(180deg, #ffffff 0%, #f7fafc 100%);
+    padding: 120px 10%;
 }
 
 .alumni-card {
-    padding: 40px;
-    border-radius: 20px;
-    background: #ffffff;
-    border: 1px solid var(--glass-border);
-    position: relative;
-    box-shadow: 0 10px 20px rgba(0,0,0,0.02);
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    padding: 45px 35px;
+    border-radius: 24px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.03);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 400px;
 }
 
-.alumni-card::before {
-    content: '\f10d';
-    font-family: 'Font Awesome 6 Free';
-    font-weight: 900;
+.alumni-card:hover {
+    box-shadow: 0 30px 60px rgba(43, 108, 176, 0.1);
+}
+
+.success-badge {
     position: absolute;
-    top: 30px;
-    left: 40px;
-    font-size: 2rem;
-    color: var(--primary);
-    opacity: 0.1;
+    top: 25px;
+    right: 25px;
+    background: var(--accent);
+    color: white;
+    padding: 5px 12px;
+    border-radius: 50px;
+    font-size: 0.75rem;
+    font-weight: 800;
+    box-shadow: 0 4px 10px rgba(255, 87, 34, 0.3);
 }
 
-.alumni-quote {
-    font-size: 1.05rem;
-    color: var(--text-main);
-    margin-bottom: 25px;
-    font-style: italic;
-    line-height: 1.8;
-}
-
-.alumni-profile {
+.company-logo-pill {
     display: flex;
     align-items: center;
-    gap: 15px;
-}
-
-.alumni-avatar {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    object-fit: cover;
-}
-
-.alumni-info h5 {
-    color: var(--primary);
-    font-size: 1.1rem;
-}
-
-.alumni-info span {
-    color: var(--text-muted);
-    font-size: 0.85rem;
-}
-
-/* Final Polish Settings */
-.section-subtitle {
-    text-align: center;
-    color: var(--accent);
-    text-transform: uppercase;
+    gap: 8px;
+    background: #f8f9fa;
+    padding: 6px 14px;
+    border-radius: 50px;
+    font-size: 0.8rem;
     font-weight: 700;
-    letter-spacing: 2px;
-    font-size: 0.9rem;
-    margin-bottom: 15px;
-    display: block;
+    color: var(--primary);
+    margin-top: 15px;
+    border: 1px solid var(--glass-border);
 }
 
-.hero p {
-    font-weight: 500;
-    line-height: 1.8;
-    color: rgba(30, 50, 80, 0.8);
+.company-logo-pill i {
+    font-size: 1rem;
 }
 
-.btn-primary {
-    border-radius: 50px; /* Modern rounded look */
-    box-shadow: 0 10px 25px rgba(26, 54, 93, 0.2);
+/* Elite Typography Adjustments */
+.section-title {
+    margin-bottom: 5rem;
 }
 
-/* Dark Mode Hint for future expansion */
-@media (prefers-color-scheme: dark) {
-    /* Optional: We can add dark-themed academic accents here if user likes */
+.curriculum-content p {
+    font-size: 1rem;
+    line-height: 1.7;
+    color: #4A5568;
+}
+
+.outcome-list {
+    margin-top: 15px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    list-style: none;
+    padding: 0;
+}
+
+.outcome-list li {
+    font-size: 0.85rem;
+    color: var(--text-main);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.outcome-list li::before {
+    content: '\f058';
+    font-family: 'Font Awesome 6 Free';
+    font-weight: 900;
+    color: #38A169;
 }
 
     .section-title {

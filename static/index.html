@@ -125,155 +125,118 @@
             </div>
         </section>
 
-        <!-- NEW: Curriculum Accordion Section -->
+        <!-- ELITE REDESIGN: Curriculum Explorer -->
         <section class="curriculum-section">
-            <span class="section-subtitle">What You'll Learn</span>
+            <span class="section-subtitle">Real World Mastery</span>
             <h2 class="section-title">Actual Tech Learning Factors</h2>
             <div class="curriculum-container">
                 <div class="curriculum-item" onclick="this.classList.toggle('active')">
                     <div class="curriculum-header">
-                        <h4>01. Agentic AI & LLMs</h4>
+                        <h4><i class="fas fa-robot status-icon"></i> 01. Agentic AI & LLM Systems</h4>
                         <i class="fas fa-chevron-down"></i>
                     </div>
                     <div class="curriculum-content">
-                        <p>Master the architecture of Large Language Models, RAG pipelines, and autonomous AI agents using LangChain and Groq. Build real tools that act on behalf of users.</p>
+                        <div style="margin-bottom: 15px;">
+                            <span class="learning-tag tag-lab">Hands-on Lab</span>
+                            <span class="learning-tag tag-skill">Advanced ML</span>
+                        </div>
+                        <p>Go beyond prompt engineering. Learn to build recursive agentic loops, custom RAG routers, and tool-calling architectures using Llama 3 and GPT-4. Deploy stateful AI workers that handle complex multi-step workflows.</p>
+                        <ul class="outcome-list">
+                            <li>Build a custom AI Counselor</li>
+                            <li>Autonomous Web Scraper</li>
+                            <li>Multi-agent Research Hub</li>
+                        </ul>
                     </div>
                 </div>
                 <div class="curriculum-item" onclick="this.classList.toggle('active')">
                     <div class="curriculum-header">
-                        <h4>02. Full Stack Engineering</h4>
+                        <h4><i class="fas fa-layer-group status-icon"></i> 02. Scalable Microservices Architecture</h4>
                         <i class="fas fa-chevron-down"></i>
                     </div>
                     <div class="curriculum-content">
-                        <p>End-to-end development using React, Node.js, and FastAPI. Understand microservices, distributed systems, and real-time data synchronization.</p>
+                        <div style="margin-bottom: 15px;">
+                            <span class="learning-tag tag-case">Industry Study</span>
+                            <span class="learning-tag tag-lab">Build Lab</span>
+                        </div>
+                        <p>Master the art of building systems that never go down. Learn event-driven architecture, Docker containerization, and Kubernetes orchestration in our "Build for Scale" module.</p>
+                        <ul class="outcome-list">
+                            <li>Distributed Data Pipeline</li>
+                            <li>Auth0 Integration Security</li>
+                            <li>Cloud Native Deployment</li>
+                        </ul>
                     </div>
                 </div>
                 <div class="curriculum-item" onclick="this.classList.toggle('active')">
                     <div class="curriculum-header">
-                        <h4>03. Data Science & Big Data</h4>
+                        <h4><i class="fas fa-shield-virus status-icon"></i> 03. Cyber-Engineered Security Ops</h4>
                         <i class="fas fa-chevron-down"></i>
                     </div>
                     <div class="curriculum-content">
-                        <p>Advanced statistical modeling, visualization, and predictive analytics. Deploy models to production environments with CI/CD for ML.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Upcoming Batches Section -->
-        <section id="upcoming-batches" class="upcoming-section">
-            <div class="upcoming-content">
-                <div class="upcoming-image">
-                    <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=1200&auto=format&fit=crop" alt="Students learning to code in a modern platform">
-                </div>
-                <div class="upcoming-text">
-                    <h2>Upcoming Batches <i class="fas fa-fire" style="color: #ff6b6b;"></i></h2>
-                    <p style="color: var(--text-muted); margin-bottom: 30px;">Secure your seat in our next intensive training programs. Admissions are closing soon!</p>
-
-                    <div class="batch-list">
-                        <div class="batch-item">
-                            <div class="batch-date"><span class="month">OCT</span><span class="day">10</span></div>
-                            <div class="batch-info">
-                                <h4>Python Full Stack Web Development</h4>
-                                <p>Morning Batch (8:00 AM - 10:00 AM) | Online</p>
-                            </div>
-                            <a href="#courses" class="btn-primary" style="padding: 8px 15px; font-size: 0.9rem; border-radius: 6px;">Enroll</a>
+                        <div style="margin-bottom: 15px;">
+                            <span class="learning-tag tag-skill">Defensive Ops</span>
+                            <span class="learning-tag tag-case">Live Defense</span>
                         </div>
-                        <div class="batch-item">
-                            <div class="batch-date"><span class="month">OCT</span><span class="day">15</span></div>
-                            <div class="batch-info">
-                                <h4>Data Science & AI Masterclass</h4>
-                                <p>Weekend Batch (10:00 AM - 1:00 PM) | Hybrid</p>
-                            </div>
-                            <a href="#courses" class="btn-primary" style="padding: 8px 15px; font-size: 0.9rem; border-radius: 6px;">Enroll</a>
-                        </div>
+                        <p>Learn to protect high-value digital assets. Our curriculum covers penetration testing, zero-trust architecture, and SOC automation with actual "Blue Team" simulations.</p>
+                        <ul class="outcome-list">
+                            <li>Real-time Threat Hunting</li>
+                            <li>Encrypted Data Vaults</li>
+                            <li>System Hardening Labs</li>
+                        </ul>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Tech Stack Section -->
-        <section class="tech-section" style="padding: 80px 10%; background: #ffffff;">
-            <span class="section-subtitle">The Stack</span>
-            <h2 class="section-title">Master the Modern Industry</h2>
-            <div class="tech-grid">
-                <div class="tech-card"><i class="fab fa-python"></i><span>Python AI</span></div>
-                <div class="tech-card"><i class="fab fa-java"></i><span>Java Backend</span></div>
-                <div class="tech-card"><i class="fab fa-react"></i><span>React Frontend</span></div>
-                <div class="tech-card"><i class="fas fa-brain"></i><span>Agentic AI</span></div>
-                <div class="tech-card"><i class="fas fa-shield-alt"></i><span>Cyber Security</span></div>
-                <div class="tech-card"><i class="fas fa-cloud"></i><span>Cloud Ops</span></div>
-            </div>
-        </section>
-
-        <!-- Course Section dynamic loading -->
-        <section id="courses" style="padding: 100px 10%; background: var(--bg-main);">
-            <h2 class="section-title">Featured Career Programs</h2>
-            <div id="course-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px;">
-                <!-- Dynamically populated -->
-            </div>
-        </section>
-
-        <!-- Featured Projects Section -->
-        <section class="project-showcase" style="padding: 100px 10%; background: #ffffff;">
-            <span class="section-subtitle">Open Source & Labs</span>
-            <h2 class="section-title">Featured Student Labs</h2>
-            <div class="project-grid">
-                <div class="project-card">
-                    <div class="project-image">
-                        <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=800&auto=format&fit=crop" alt="AI Project">
-                    </div>
-                    <div class="project-info">
-                        <span class="project-tag">Artificial Intelligence</span>
-                        <h4>Autonomous Agent Hub</h4>
-                        <p style="color: var(--text-muted); font-size: 0.9rem;">A multi-agent system built for enterprise workflow automation.</p>
-                    </div>
-                </div>
-                <div class="project-card">
-                    <div class="project-image">
-                        <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=800&auto=format&fit=crop" alt="Web Project">
-                    </div>
-                    <div class="project-info">
-                        <span class="project-tag">Full Stack</span>
-                        <h4>E-Learning Microservices</h4>
-                        <p style="color: var(--text-muted); font-size: 0.9rem;">Scalable architecture handling 1M+ student requests.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- NEW: Alumni Success / Testimonials Section -->
+        <!-- ELITE REDESIGN: Wall of Success -->
         <section class="alumni-section">
-            <span class="section-subtitle">Success Stories</span>
-            <h2 class="section-title">Placed at Global Leaders</h2>
+            <span class="section-subtitle">Real Results</span>
+            <h2 class="section-title">The Wall of Success</h2>
             <div class="alumni-grid">
                 <div class="alumni-card">
-                    <p class="alumni-quote">"The Agentic AI training at Linkcode was a game-changer. I transitioned from a manual tester to a Machine Learning Engineer at Amazon within 6 months."</p>
-                    <div class="alumni-profile">
-                        <img src="https://i.pravatar.cc/150?u=1" class="alumni-avatar" alt="Alumni">
-                        <div class="alumni-info">
-                            <h5>Rahul Sharma</h5>
-                            <span>Placed at Amazon</span>
+                    <span class="success-badge">22 LPA Package</span>
+                    <p class="alumni-quote">"The transition from generic coding to Agentic AI was exactly what I needed. The hands-on labs on recursive RAG pipelines secured my spot at Amazon's AI Core team."</p>
+                    <div>
+                        <div class="alumni-profile">
+                            <img src="https://i.pravatar.cc/150?u=12" class="alumni-avatar" alt="Alumni">
+                            <div class="alumni-info">
+                                <h5>Rahul Sharma</h5>
+                                <span>AI Systems Engineer</span>
+                            </div>
+                        </div>
+                        <div class="company-logo-pill">
+                            <i class="fab fa-amazon"></i> Placed at Amazon
                         </div>
                     </div>
                 </div>
                 <div class="alumni-card">
-                    <p class="alumni-quote">"The project-driven approach is what makes this institute different. building actual industry use-cases gave me the confidence to crack the Google interview."</p>
-                    <div class="alumni-profile">
-                        <img src="https://i.pravatar.cc/150?u=2" class="alumni-avatar" alt="Alumni">
-                        <div class="alumni-info">
-                            <h5>Priya Mehta</h5>
-                            <span>Placed at Google</span>
+                    <span class="success-badge">Highest Hike: 250%</span>
+                    <p class="alumni-quote">"building professional microservices architecture in the 'Build Lab' gave me an edge during Google's system design interviews. Highly recommended!"</p>
+                    <div>
+                        <div class="alumni-profile">
+                            <img src="https://i.pravatar.cc/150?u=22" class="alumni-avatar" alt="Alumni">
+                            <div class="alumni-info">
+                                <h5>Priya Mehta</h5>
+                                <span>Senior Software Engineer</span>
+                            </div>
+                        </div>
+                        <div class="company-logo-pill">
+                            <i class="fab fa-google"></i> Placed at Google
                         </div>
                     </div>
                 </div>
                 <div class="alumni-card">
-                    <p class="alumni-quote">"Linkcode's AI Counselor helped me choose the right path when I was confused. Today, I'm a Senior Frontend Engineer at TCS Digital."</p>
-                    <div class="alumni-profile">
-                        <img src="https://i.pravatar.cc/150?u=3" class="alumni-avatar" alt="Alumni">
-                        <div class="alumni-info">
-                            <h5>Vikram Singh</h5>
-                            <span>Placed at TCS</span>
+                    <span class="success-badge">Campus Placed</span>
+                    <p class="alumni-quote">"Linkcode's placement cell didn't just give me interviews; they gave me a roadmap to success. The Agentic AI Counselor kept me on track every day."</p>
+                    <div>
+                        <div class="alumni-profile">
+                            <img src="https://i.pravatar.cc/150?u=32" class="alumni-avatar" alt="Alumni">
+                            <div class="alumni-info">
+                                <h5>Vikram Singh</h5>
+                                <span>Full Stack Developer</span>
+                            </div>
+                        </div>
+                        <div class="company-logo-pill">
+                            <i class="fab fa-microsoft"></i> Placed at Microsoft
                         </div>
                     </div>
                 </div>
