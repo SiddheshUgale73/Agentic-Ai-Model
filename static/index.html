@@ -21,12 +21,12 @@
     </header>
 
     <main>
-        <section id="home" class="hero">
+        <section id="home" class="hero" style="background: url('file:///C:/Users/Sarvadnya/.gemini/antigravity/brain/9d7de2ca-0e2e-46af-903d-d67aac53aba0/tech_learning_hero_1774855114515.png');">
             <h1>Master the Future of <br>AI & Coding</h1>
-            <p>Accelerate your career with agentic AI training, expert placement counseling, and industry-ready skills.
-            </p>
-            <div class="hero-btns">
-                <a href="#courses" class="btn-primary">Explore Courses</a>
+            <p>Accelerate your career with agentic AI training, expert placement counseling, and industry-ready skills.</p>
+            <div class="hero-btns" style="display: flex; gap: 20px;">
+                <a href="#courses" class="btn-primary">Start My Journey</a>
+                <button onclick="triggerRoadmap()" class="btn-primary" style="background: transparent; border: 2px solid var(--primary); color: var(--primary);">Generate My Roadmap</button>
             </div>
         </section>
 
@@ -55,12 +55,8 @@
         <!-- About Us Section -->
         <section id="about" class="about-section">
             <div class="about-content">
-                <h2 style="font-size: 2.5rem; margin-bottom: 20px; color: var(--text-main);">About Linkcode Technologies
-                </h2>
-                <p style="font-size: 1.1rem; color: var(--text-muted); max-width: 800px; margin: 0 auto 50px auto;">Our
-                    mission is to bridge the gap between academia and industry. We provide world-class, project-driven
-                    IT education empowered by our cutting-edge AI Agentic Counselor, ensuring every student finds
-                    exactly the right career path.</p>
+                <h2 class="section-title">About Linkcode Technologies</h2>
+                <p style="font-size: 1.1rem; color: var(--text-muted); max-width: 800px; margin: 0 auto 50px auto;">Our mission is to bridge the gap between academia and industry. We provide world-class, project-driven IT education empowered by our cutting-edge AI Agentic Counselor.</p>
 
                 <div class="features-grid">
                     <div class="feature-card glass">
@@ -82,70 +78,110 @@
             </div>
         </section>
 
+        <!-- NEW: Learning Journey Section -->
+        <section class="journey-section">
+            <h2 class="section-title">The Linkcode Learning Journey</h2>
+            <div class="journey-grid">
+                <div class="journey-step">
+                    <div class="step-number">1</div>
+                    <h4>AI Intake</h4>
+                    <p>Consult with our Agentic AI to find your perfect course fit based on your background.</p>
+                </div>
+                <div class="journey-step">
+                    <div class="step-number">2</div>
+                    <h4>Deep Learning</h4>
+                    <p>Engage in intensive, industry-aligned training with our expert mentors.</p>
+                </div>
+                <div class="journey-step">
+                    <div class="step-number">3</div>
+                    <h4>The Build Lab</h4>
+                    <p>Develop professional-grade projects to demonstrate your technical mastery.</p>
+                </div>
+                <div class="journey-step">
+                    <div class="step-number">4</div>
+                    <h4>Placement Ops</h4>
+                    <p>Get interviewed by top firms through our robust campus placement ecosystem.</p>
+                </div>
+            </div>
+        </section>
 
         <!-- Upcoming Batches Section -->
         <section id="upcoming-batches" class="upcoming-section">
             <div class="upcoming-content">
                 <div class="upcoming-image">
-                    <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=1470&auto=format&fit=crop"
-                        alt="Students learning to code in a modern classroom">
+                    <img src="file:///C:/Users/Sarvadnya/.gemini/antigravity/brain/9d7de2ca-0e2e-46af-903d-d67aac53aba0/ai_mentor_abstract_1774855139259.png" alt="Students learning to code in a modern platform">
                 </div>
                 <div class="upcoming-text">
                     <h2>Upcoming Batches <i class="fas fa-fire" style="color: #ff6b6b;"></i></h2>
-                    <p style="color: var(--text-muted); margin-bottom: 30px;">Secure your seat in our next intensive
-                        training programs. Admissions are closing soon!</p>
+                    <p style="color: var(--text-muted); margin-bottom: 30px;">Secure your seat in our next intensive training programs. Admissions are closing soon!</p>
 
                     <div class="batch-list">
                         <div class="batch-item">
-                            <div class="batch-date">
-                                <span class="month">OCT</span>
-                                <span class="day">10</span>
-                            </div>
+                            <div class="batch-date"><span class="month">OCT</span><span class="day">10</span></div>
                             <div class="batch-info">
                                 <h4>Python Full Stack Web Development</h4>
                                 <p>Morning Batch (8:00 AM - 10:00 AM) | Online</p>
                             </div>
-                            <a href="#courses" class="btn-primary"
-                                style="padding: 8px 15px; font-size: 0.9rem; border-radius: 6px;">Enroll</a>
+                            <a href="#courses" class="btn-primary" style="padding: 8px 15px; font-size: 0.9rem; border-radius: 6px;">Enroll</a>
                         </div>
-
                         <div class="batch-item">
-                            <div class="batch-date">
-                                <span class="month">OCT</span>
-                                <span class="day">15</span>
-                            </div>
+                            <div class="batch-date"><span class="month">OCT</span><span class="day">15</span></div>
                             <div class="batch-info">
                                 <h4>Data Science & AI Masterclass</h4>
                                 <p>Weekend Batch (10:00 AM - 1:00 PM) | Hybrid</p>
                             </div>
-                            <a href="#courses" class="btn-primary"
-                                style="padding: 8px 15px; font-size: 0.9rem; border-radius: 6px;">Enroll</a>
-                        </div>
-
-                        <div class="batch-item">
-                            <div class="batch-date">
-                                <span class="month">NOV</span>
-                                <span class="day">01</span>
-                            </div>
-                            <div class="batch-info">
-                                <h4>Java Full Stack Engineering</h4>
-                                <p>Evening Batch (6:00 PM - 8:00 PM) | Offline</p>
-                            </div>
-                            <a href="#courses" class="btn-primary"
-                                style="padding: 8px 15px; font-size: 0.9rem; border-radius: 6px;">Enroll</a>
+                            <a href="#courses" class="btn-primary" style="padding: 8px 15px; font-size: 0.9rem; border-radius: 6px;">Enroll</a>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
+        <!-- NEW: Tech Stack Section -->
+        <section class="tech-section" style="padding: 80px 10%; background: #ffffff;">
+            <h2 class="section-title">Master the Modern Tech Stack</h2>
+            <div class="tech-grid">
+                <div class="tech-card"><i class="fab fa-python"></i><span>Python AI</span></div>
+                <div class="tech-card"><i class="fab fa-java"></i><span>Java Backend</span></div>
+                <div class="tech-card"><i class="fab fa-react"></i><span>React Frontend</span></div>
+                <div class="tech-card"><i class="fas fa-brain"></i><span>Agentic AI</span></div>
+                <div class="tech-card"><i class="fas fa-shield-alt"></i><span>Cyber Security</span></div>
+                <div class="tech-card"><i class="fas fa-cloud"></i><span>Cloud Ops</span></div>
+            </div>
+        </section>
+
         <!-- Course Section dynamic loading -->
         <section id="courses" style="padding: 100px 10%; background: var(--bg-main);">
-            <h2 style="text-align: center; font-size: 2.5rem; margin-bottom: 50px; color: var(--text-main);">Featured
-                Programs</h2>
-            <div id="course-grid"
-                style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px;">
+            <h2 class="section-title">Featured Programs</h2>
+            <div id="course-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px;">
                 <!-- Dynamically populated -->
+            </div>
+        </section>
+
+        <!-- NEW: Featured Projects Section -->
+        <section class="project-showcase" style="padding: 100px 10%; background: #ffffff;">
+            <h2 class="section-title">Featured Student Labs</h2>
+            <div class="project-grid">
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="file:///C:/Users/Sarvadnya/.gemini/antigravity/brain/9d7de2ca-0e2e-46af-903d-d67aac53aba0/coding_project_showcase_1774855178048.png" alt="AI Project">
+                    </div>
+                    <div class="project-info">
+                        <span class="project-tag">Artificial Intelligence</span>
+                        <h4>Autonomous Agent Hub</h4>
+                        <p style="color: var(--text-muted); font-size: 0.9rem;">A multi-agent system built for enterprise workflow automation.</p>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=1000&auto=format&fit=crop" alt="Web Project">
+                    </div>
+                    <div class="project-info">
+                        <span class="project-tag">Full Stack</span>
+                        <h4>E-Learning Microservices</h4>
+                        <p style="color: var(--text-muted); font-size: 0.9rem;">Scalable architecture handling 1M+ student requests.</p>
+                    </div>
+                </div>
             </div>
         </section>
 

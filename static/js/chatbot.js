@@ -281,6 +281,7 @@ class ChatWidget {
 // Initialize when DOM is ready
 document.addEventListener('DOMContentLoaded', () => {
     const chat = new ChatWidget();
+    window.currentChatInstance = chat; // Expose for landing page triggers
     chat.fetchCourses(); // Load dynamic courses
 
     // Header scroll effect
@@ -292,5 +293,48 @@ document.addEventListener('DOMContentLoaded', () => {
             header.classList.remove('scrolled');
         }
     });
+
+    // Global Triggers for Landing Page
+    window.triggerRoadmap = (goal = "Tech Career") => {
+        const chat = window.currentChatInstance;
+        if (!chat) return;
+
+        // Force open
+        chat.toggle(true);
+
+        const welcomeScreen = document.getElementById('chat-screen-welcome');
+        const intakeScreen = document.getElementById('chat-screen-intake');
+        const activeScreen = document.getElementById('chat-screen-active');
+
+        if (activeScreen.style.display === 'flex') {
+            // Already in active chat
+            chat.sendMessage(`I need a personalized career roadmap for a career in ${goal}. Can you provide a step-by-step 6-month plan?`);
+        } else {
+            // Go to intake
+            welcomeScreen.style.display = 'none';
+            intakeScreen.style.display = 'flex';
+            document.getElementById('intake-msg').value = `I want to generate a personalized career roadmap for ${goal}.`;
+            document.getElementById('intake-msg').focus();
+        }
+    };
+
+    window.triggerAssessment = () => {
+        const chat = window.currentChatInstance;
+        if (!chat) return;
+
+        chat.toggle(true);
+        const welcomeScreen = document.getElementById('chat-screen-welcome');
+        const intakeScreen = document.getElementById('chat-screen-intake');
+        const activeScreen = document.getElementById('chat-screen-active');
+
+        if (activeScreen.style.display === 'flex') {
+            chat.sendMessage("I want to start a skills assessment to see which course fits me best.");
+        } else {
+            welcomeScreen.style.display = 'none';
+            intakeScreen.style.display = 'flex';
+            document.getElementById('intake-msg').value = "I want to start a skills assessment.";
+            document.getElementById('intake-msg').focus();
+        }
+    };
 });
 
