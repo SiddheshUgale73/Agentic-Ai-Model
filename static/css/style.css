@@ -750,6 +750,188 @@ header.scrolled {
         grid-template-columns: 1fr;
     }
 
+/* --- FINAL TRANSFORMATION REFRESH --- */
+
+/* Industry Partners Marquee */
+.industry-section {
+    padding: 60px 5%;
+    background: #ffffff;
+    overflow: hidden;
+    border-bottom: 1px solid var(--glass-border);
+}
+
+.marquee {
+    display: flex;
+    white-space: nowrap;
+    gap: 100px;
+    animation: scroll 40s linear infinite;
+}
+
+.marquee i {
+    font-size: 2.5rem;
+    color: var(--text-muted);
+    opacity: 0.5;
+    transition: var(--transition);
+}
+
+.marquee i:hover {
+    color: var(--primary);
+    opacity: 1;
+}
+
+@keyframes scroll {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-100%); }
+}
+
+/* Curriculum Accordion */
+.curriculum-section {
+    padding: 100px 10%;
+    background: var(--bg-main);
+}
+
+.curriculum-container {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.curriculum-item {
+    background: #ffffff;
+    border-radius: 12px;
+    margin-bottom: 15px;
+    border: 1px solid var(--glass-border);
+    overflow: hidden;
+}
+
+.curriculum-header {
+    padding: 20px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    background: #ffffff;
+    transition: var(--transition);
+}
+
+.curriculum-header:hover {
+    background: rgba(43, 108, 176, 0.05);
+}
+
+.curriculum-header h4 {
+    font-size: 1.2rem;
+    color: var(--primary);
+}
+
+.curriculum-content {
+    padding: 0 30px;
+    max-height: 0;
+    overflow: hidden;
+    transition: all 0.5s cubic-bezier(0, 1, 0.5, 1);
+    background: #fdfdfd;
+}
+
+.curriculum-item.active .curriculum-content {
+    max-height: 500px;
+    padding: 20px 30px 30px 30px;
+}
+
+.curriculum-item.active .curriculum-header i {
+    transform: rotate(180deg);
+}
+
+/* Alumni Success Cards */
+.alumni-section {
+    padding: 100px 10%;
+    background: #ffffff;
+}
+
+.alumni-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-top: 50px;
+}
+
+.alumni-card {
+    padding: 40px;
+    border-radius: 20px;
+    background: #ffffff;
+    border: 1px solid var(--glass-border);
+    position: relative;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.02);
+}
+
+.alumni-card::before {
+    content: '\f10d';
+    font-family: 'Font Awesome 6 Free';
+    font-weight: 900;
+    position: absolute;
+    top: 30px;
+    left: 40px;
+    font-size: 2rem;
+    color: var(--primary);
+    opacity: 0.1;
+}
+
+.alumni-quote {
+    font-size: 1.05rem;
+    color: var(--text-main);
+    margin-bottom: 25px;
+    font-style: italic;
+    line-height: 1.8;
+}
+
+.alumni-profile {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.alumni-avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.alumni-info h5 {
+    color: var(--primary);
+    font-size: 1.1rem;
+}
+
+.alumni-info span {
+    color: var(--text-muted);
+    font-size: 0.85rem;
+}
+
+/* Final Polish Settings */
+.section-subtitle {
+    text-align: center;
+    color: var(--accent);
+    text-transform: uppercase;
+    font-weight: 700;
+    letter-spacing: 2px;
+    font-size: 0.9rem;
+    margin-bottom: 15px;
+    display: block;
+}
+
+.hero p {
+    font-weight: 500;
+    line-height: 1.8;
+    color: rgba(30, 50, 80, 0.8);
+}
+
+.btn-primary {
+    border-radius: 50px; /* Modern rounded look */
+    box-shadow: 0 10px 25px rgba(26, 54, 93, 0.2);
+}
+
+/* Dark Mode Hint for future expansion */
+@media (prefers-color-scheme: dark) {
+    /* Optional: We can add dark-themed academic accents here if user likes */
+}
+
     .section-title {
         font-size: 2rem;
     }
