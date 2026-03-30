@@ -21,12 +21,30 @@
     </header>
 
     <main>
-        <section id="home" class="hero" style="background: url('file:///C:/Users/Sarvadnya/.gemini/antigravity/brain/9d7de2ca-0e2e-46af-903d-d67aac53aba0/tech_learning_hero_1774855114515.png');">
+        <!-- Updated Hero with Professional Image -->
+        <section id="home" class="hero" style="background: url('https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?q=80&w=1600&auto=format&fit=crop');">
+            <span class="section-subtitle" style="color: var(--primary);">Next-Gen IT Academy</span>
             <h1>Master the Future of <br>AI & Coding</h1>
             <p>Accelerate your career with agentic AI training, expert placement counseling, and industry-ready skills.</p>
             <div class="hero-btns" style="display: flex; gap: 20px;">
                 <a href="#courses" class="btn-primary">Start My Journey</a>
                 <button onclick="triggerRoadmap()" class="btn-primary" style="background: transparent; border: 2px solid var(--primary); color: var(--primary);">Generate My Roadmap</button>
+            </div>
+        </section>
+
+        <!-- NEW: Industry Partners Marquee -->
+        <section class="industry-section">
+            <div class="marquee">
+                <i class="fab fa-google"></i>
+                <i class="fab fa-amazon"></i>
+                <i class="fab fa-microsoft"></i>
+                <i class="fab fa-apple"></i>
+                <i class="fab fa-meta"></i>
+                <i class="fab fa-node-js"></i>
+                <i class="fab fa-aws"></i>
+                <i class="fab fa-google"></i>
+                <i class="fab fa-amazon"></i>
+                <i class="fab fa-microsoft"></i>
             </div>
         </section>
 
@@ -55,6 +73,7 @@
         <!-- About Us Section -->
         <section id="about" class="about-section">
             <div class="about-content">
+                <span class="section-subtitle">Since 2012</span>
                 <h2 class="section-title">About Linkcode Technologies</h2>
                 <p style="font-size: 1.1rem; color: var(--text-muted); max-width: 800px; margin: 0 auto 50px auto;">Our mission is to bridge the gap between academia and industry. We provide world-class, project-driven IT education empowered by our cutting-edge AI Agentic Counselor.</p>
 
@@ -78,8 +97,9 @@
             </div>
         </section>
 
-        <!-- NEW: Learning Journey Section -->
+        <!-- Learning Journey Section -->
         <section class="journey-section">
+            <span class="section-subtitle">The Blueprint</span>
             <h2 class="section-title">The Linkcode Learning Journey</h2>
             <div class="journey-grid">
                 <div class="journey-step">
@@ -105,11 +125,46 @@
             </div>
         </section>
 
+        <!-- NEW: Curriculum Accordion Section -->
+        <section class="curriculum-section">
+            <span class="section-subtitle">What You'll Learn</span>
+            <h2 class="section-title">Actual Tech Learning Factors</h2>
+            <div class="curriculum-container">
+                <div class="curriculum-item" onclick="this.classList.toggle('active')">
+                    <div class="curriculum-header">
+                        <h4>01. Agentic AI & LLMs</h4>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="curriculum-content">
+                        <p>Master the architecture of Large Language Models, RAG pipelines, and autonomous AI agents using LangChain and Groq. Build real tools that act on behalf of users.</p>
+                    </div>
+                </div>
+                <div class="curriculum-item" onclick="this.classList.toggle('active')">
+                    <div class="curriculum-header">
+                        <h4>02. Full Stack Engineering</h4>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="curriculum-content">
+                        <p>End-to-end development using React, Node.js, and FastAPI. Understand microservices, distributed systems, and real-time data synchronization.</p>
+                    </div>
+                </div>
+                <div class="curriculum-item" onclick="this.classList.toggle('active')">
+                    <div class="curriculum-header">
+                        <h4>03. Data Science & Big Data</h4>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="curriculum-content">
+                        <p>Advanced statistical modeling, visualization, and predictive analytics. Deploy models to production environments with CI/CD for ML.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <!-- Upcoming Batches Section -->
         <section id="upcoming-batches" class="upcoming-section">
             <div class="upcoming-content">
                 <div class="upcoming-image">
-                    <img src="file:///C:/Users/Sarvadnya/.gemini/antigravity/brain/9d7de2ca-0e2e-46af-903d-d67aac53aba0/ai_mentor_abstract_1774855139259.png" alt="Students learning to code in a modern platform">
+                    <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=1200&auto=format&fit=crop" alt="Students learning to code in a modern platform">
                 </div>
                 <div class="upcoming-text">
                     <h2>Upcoming Batches <i class="fas fa-fire" style="color: #ff6b6b;"></i></h2>
@@ -137,9 +192,10 @@
             </div>
         </section>
 
-        <!-- NEW: Tech Stack Section -->
+        <!-- Tech Stack Section -->
         <section class="tech-section" style="padding: 80px 10%; background: #ffffff;">
-            <h2 class="section-title">Master the Modern Tech Stack</h2>
+            <span class="section-subtitle">The Stack</span>
+            <h2 class="section-title">Master the Modern Industry</h2>
             <div class="tech-grid">
                 <div class="tech-card"><i class="fab fa-python"></i><span>Python AI</span></div>
                 <div class="tech-card"><i class="fab fa-java"></i><span>Java Backend</span></div>
@@ -152,19 +208,20 @@
 
         <!-- Course Section dynamic loading -->
         <section id="courses" style="padding: 100px 10%; background: var(--bg-main);">
-            <h2 class="section-title">Featured Programs</h2>
+            <h2 class="section-title">Featured Career Programs</h2>
             <div id="course-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px;">
                 <!-- Dynamically populated -->
             </div>
         </section>
 
-        <!-- NEW: Featured Projects Section -->
+        <!-- Featured Projects Section -->
         <section class="project-showcase" style="padding: 100px 10%; background: #ffffff;">
+            <span class="section-subtitle">Open Source & Labs</span>
             <h2 class="section-title">Featured Student Labs</h2>
             <div class="project-grid">
                 <div class="project-card">
                     <div class="project-image">
-                        <img src="file:///C:/Users/Sarvadnya/.gemini/antigravity/brain/9d7de2ca-0e2e-46af-903d-d67aac53aba0/coding_project_showcase_1774855178048.png" alt="AI Project">
+                        <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=800&auto=format&fit=crop" alt="AI Project">
                     </div>
                     <div class="project-info">
                         <span class="project-tag">Artificial Intelligence</span>
@@ -174,12 +231,50 @@
                 </div>
                 <div class="project-card">
                     <div class="project-image">
-                        <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=1000&auto=format&fit=crop" alt="Web Project">
+                        <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=800&auto=format&fit=crop" alt="Web Project">
                     </div>
                     <div class="project-info">
                         <span class="project-tag">Full Stack</span>
                         <h4>E-Learning Microservices</h4>
                         <p style="color: var(--text-muted); font-size: 0.9rem;">Scalable architecture handling 1M+ student requests.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- NEW: Alumni Success / Testimonials Section -->
+        <section class="alumni-section">
+            <span class="section-subtitle">Success Stories</span>
+            <h2 class="section-title">Placed at Global Leaders</h2>
+            <div class="alumni-grid">
+                <div class="alumni-card">
+                    <p class="alumni-quote">"The Agentic AI training at Linkcode was a game-changer. I transitioned from a manual tester to a Machine Learning Engineer at Amazon within 6 months."</p>
+                    <div class="alumni-profile">
+                        <img src="https://i.pravatar.cc/150?u=1" class="alumni-avatar" alt="Alumni">
+                        <div class="alumni-info">
+                            <h5>Rahul Sharma</h5>
+                            <span>Placed at Amazon</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="alumni-card">
+                    <p class="alumni-quote">"The project-driven approach is what makes this institute different. building actual industry use-cases gave me the confidence to crack the Google interview."</p>
+                    <div class="alumni-profile">
+                        <img src="https://i.pravatar.cc/150?u=2" class="alumni-avatar" alt="Alumni">
+                        <div class="alumni-info">
+                            <h5>Priya Mehta</h5>
+                            <span>Placed at Google</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="alumni-card">
+                    <p class="alumni-quote">"Linkcode's AI Counselor helped me choose the right path when I was confused. Today, I'm a Senior Frontend Engineer at TCS Digital."</p>
+                    <div class="alumni-profile">
+                        <img src="https://i.pravatar.cc/150?u=3" class="alumni-avatar" alt="Alumni">
+                        <div class="alumni-info">
+                            <h5>Vikram Singh</h5>
+                            <span>Placed at TCS</span>
+                        </div>
                     </div>
                 </div>
             </div>
