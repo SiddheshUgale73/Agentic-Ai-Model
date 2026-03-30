@@ -21,18 +21,20 @@
     </header>
 
     <main>
-        <!-- Updated Hero with Professional Image -->
+        <!-- SECTION: Hero -->
         <section id="home" class="hero" style="background: url('https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?q=80&w=1600&auto=format&fit=crop');">
-            <span class="section-subtitle" style="color: var(--primary);">Next-Gen IT Academy</span>
+            <span class="section-subtitle">Next-Gen AI Academy</span>
             <h1>Master the Future of <br>AI & Coding</h1>
             <p>Accelerate your career with agentic AI training, expert placement counseling, and industry-ready skills.</p>
-            <div class="hero-btns" style="display: flex; gap: 20px;">
-                <a href="#courses" class="btn-primary">Start My Journey</a>
-                <button onclick="triggerRoadmap()" class="btn-primary" style="background: transparent; border: 2px solid var(--primary); color: var(--primary);">Generate My Roadmap</button>
+            <div class="hero-btns">
+                <a href="#courses" class="btn-primary"><i class="fas fa-rocket"></i> Start My Journey</a>
+                <button onclick="triggerRoadmap()" class="btn-primary" style="background: transparent; border: 2px solid var(--primary); color: var(--primary);">
+                    <i class="fas fa-map-location-dot"></i> Generate My Roadmap
+                </button>
             </div>
         </section>
 
-        <!-- NEW: Industry Partners Marquee -->
+        <!-- SECTION: Marquee -->
         <section class="industry-section">
             <div class="marquee">
                 <i class="fab fa-google"></i>
@@ -48,7 +50,7 @@
             </div>
         </section>
 
-        <!-- Stats Section -->
+        <!-- SECTION: Stats -->
         <section class="stats-section">
             <div class="stats-container">
                 <div class="stat-box">
@@ -70,13 +72,11 @@
             </div>
         </section>
 
-        <!-- About Us Section -->
-        <section id="about" class="about-section">
-            <div class="about-content">
-                <span class="section-subtitle">Since 2012</span>
+        <!-- SECTION: About Us -->
+        <section id="about" class="section bg-white">
+            <div class="container">
+                <span class="section-subtitle">The Vision</span>
                 <h2 class="section-title">About Linkcode Technologies</h2>
-                <p style="font-size: 1.1rem; color: var(--text-muted); max-width: 800px; margin: 0 auto 50px auto;">Our mission is to bridge the gap between academia and industry. We provide world-class, project-driven IT education empowered by our cutting-edge AI Agentic Counselor.</p>
-
                 <div class="features-grid">
                     <div class="feature-card glass">
                         <div class="feature-icon"><i class="fas fa-chalkboard-teacher"></i></div>
@@ -97,228 +97,145 @@
             </div>
         </section>
 
-        <!-- Learning Journey Section -->
-        <section class="journey-section">
-            <span class="section-subtitle">The Blueprint</span>
-            <h2 class="section-title">The Linkcode Learning Journey</h2>
-            <div class="journey-grid">
-                <div class="journey-step">
-                    <div class="step-number">1</div>
-                    <h4>AI Intake</h4>
-                    <p>Consult with our Agentic AI to find your perfect course fit based on your background.</p>
-                </div>
-                <div class="journey-step">
-                    <div class="step-number">2</div>
-                    <h4>Deep Learning</h4>
-                    <p>Engage in intensive, industry-aligned training with our expert mentors.</p>
-                </div>
-                <div class="journey-step">
-                    <div class="step-number">3</div>
-                    <h4>The Build Lab</h4>
-                    <p>Develop professional-grade projects to demonstrate your technical mastery.</p>
-                </div>
-                <div class="journey-step">
-                    <div class="step-number">4</div>
-                    <h4>Placement Ops</h4>
-                    <p>Get interviewed by top firms through our robust campus placement ecosystem.</p>
+        <!-- SECTION: Learning Journey -->
+        <section class="section bg-gray">
+            <div class="container">
+                <span class="section-subtitle">The Blueprint</span>
+                <h2 class="section-title">The Engineering Journey</h2>
+                <div class="journey-grid">
+                    <div class="journey-step">
+                        <div class="step-number">1</div>
+                        <h4>AI Intake</h4>
+                        <p>Consult with our Agentic AI to find your perfect course fit based on your background.</p>
+                    </div>
+                    <div class="journey-step">
+                        <div class="step-number">2</div>
+                        <h4>Deep Learning</h4>
+                        <p>Engage in intensive, industry-aligned training with our expert mentors.</p>
+                    </div>
+                    <div class="journey-step">
+                        <div class="step-number">3</div>
+                        <h4>The Build Lab</h4>
+                        <p>Develop professional-grade projects to demonstrate your technical mastery.</p>
+                    </div>
+                    <div class="journey-step">
+                        <div class="step-number">4</div>
+                        <h4>Placement Ops</h4>
+                        <p>Get interviewed by top firms through our robust campus placement ecosystem.</p>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <!-- ELITE REDESIGN: Curriculum Explorer -->
-        <section class="curriculum-section">
-            <span class="section-subtitle">Real World Mastery</span>
-            <h2 class="section-title">Actual Tech Learning Factors</h2>
-            <div class="curriculum-container">
-                <div class="curriculum-item" onclick="this.classList.toggle('active')">
-                    <div class="curriculum-header">
-                        <h4><i class="fas fa-robot status-icon"></i> 01. Agentic AI & LLM Systems</h4>
-                        <i class="fas fa-chevron-down"></i>
-                    </div>
-                    <div class="curriculum-content">
-                        <div style="margin-bottom: 15px;">
+        <!-- SECTION: Curriculum Explorer -->
+        <section class="section bg-white">
+            <div class="container">
+                <span class="section-subtitle">Real World Mastery</span>
+                <h2 class="section-title">Actual Tech Learning Factors</h2>
+                <div class="curriculum-container">
+                    <div class="curriculum-item" onclick="this.classList.toggle('active')">
+                        <div class="curriculum-header">
+                            <h4><i class="fas fa-robot status-icon"></i> 01. Agentic AI & LLM Systems</h4>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="curriculum-content">
                             <span class="learning-tag tag-lab">Hands-on Lab</span>
                             <span class="learning-tag tag-skill">Advanced ML</span>
+                            <p>Build recursive agentic loops, custom RAG routers, and tool-calling architectures using Llama 3 and GPT-4.</p>
+                            <ul class="outcome-list">
+                                <li>Custom AI Counselor</li>
+                                <li>Multi-agent Research Hub</li>
+                            </ul>
                         </div>
-                        <p>Go beyond prompt engineering. Learn to build recursive agentic loops, custom RAG routers, and tool-calling architectures using Llama 3 and GPT-4. Deploy stateful AI workers that handle complex multi-step workflows.</p>
-                        <ul class="outcome-list">
-                            <li>Build a custom AI Counselor</li>
-                            <li>Autonomous Web Scraper</li>
-                            <li>Multi-agent Research Hub</li>
-                        </ul>
                     </div>
-                </div>
-                <div class="curriculum-item" onclick="this.classList.toggle('active')">
-                    <div class="curriculum-header">
-                        <h4><i class="fas fa-layer-group status-icon"></i> 02. Scalable Microservices Architecture</h4>
-                        <i class="fas fa-chevron-down"></i>
-                    </div>
-                    <div class="curriculum-content">
-                        <div style="margin-bottom: 15px;">
-                            <span class="learning-tag tag-case">Industry Study</span>
-                            <span class="learning-tag tag-lab">Build Lab</span>
+                    <div class="curriculum-item" onclick="this.classList.toggle('active')">
+                        <div class="curriculum-header">
+                            <h4><i class="fas fa-layer-group status-icon"></i> 02. Scalable Microservices</h4>
+                            <i class="fas fa-chevron-down"></i>
                         </div>
-                        <p>Master the art of building systems that never go down. Learn event-driven architecture, Docker containerization, and Kubernetes orchestration in our "Build for Scale" module.</p>
-                        <ul class="outcome-list">
-                            <li>Distributed Data Pipeline</li>
-                            <li>Auth0 Integration Security</li>
-                            <li>Cloud Native Deployment</li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="curriculum-item" onclick="this.classList.toggle('active')">
-                    <div class="curriculum-header">
-                        <h4><i class="fas fa-shield-virus status-icon"></i> 03. Cyber-Engineered Security Ops</h4>
-                        <i class="fas fa-chevron-down"></i>
-                    </div>
-                    <div class="curriculum-content">
-                        <div style="margin-bottom: 15px;">
-                            <span class="learning-tag tag-skill">Defensive Ops</span>
-                            <span class="learning-tag tag-case">Live Defense</span>
+                        <div class="curriculum-content">
+                            <span class="learning-tag tag-lab">Docker Ops</span>
+                            <span class="learning-tag tag-skill">Kubernetes</span>
+                            <p>Master event-driven architecture, containerization, and cloud-native deployment.</p>
+                            <ul class="outcome-list">
+                                <li>Distributed Pipeline</li>
+                                <li>Cloud-Native Deploy</li>
+                            </ul>
                         </div>
-                        <p>Learn to protect high-value digital assets. Our curriculum covers penetration testing, zero-trust architecture, and SOC automation with actual "Blue Team" simulations.</p>
-                        <ul class="outcome-list">
-                            <li>Real-time Threat Hunting</li>
-                            <li>Encrypted Data Vaults</li>
-                            <li>System Hardening Labs</li>
-                        </ul>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- ELITE REDESIGN: Wall of Success -->
-        <section class="alumni-section">
-            <span class="section-subtitle">Real Results</span>
-            <h2 class="section-title">The Wall of Success</h2>
-            <div class="alumni-grid">
-                <div class="alumni-card">
-                    <span class="success-badge">22 LPA Package</span>
-                    <p class="alumni-quote">"The transition from generic coding to Agentic AI was exactly what I needed. The hands-on labs on recursive RAG pipelines secured my spot at Amazon's AI Core team."</p>
-                    <div>
+        <!-- SECTION: Success Wall -->
+        <section class="section bg-gray">
+            <div class="container">
+                <span class="section-subtitle">Real Results</span>
+                <h2 class="section-title">The Wall of Success</h2>
+                <div class="alumni-grid">
+                    <div class="alumni-card">
+                        <span class="success-badge">22 LPA Package</span>
+                        <p class="alumni-quote">"The transition from generic coding to Agentic AI was exactly what I needed. The hands-on labs secured my spot at Amazon."</p>
                         <div class="alumni-profile">
-                            <img src="https://i.pravatar.cc/150?u=12" class="alumni-avatar" alt="Alumni">
+                            <img src="https://i.pravatar.cc/150?u=12" class="alumni-avatar">
                             <div class="alumni-info">
                                 <h5>Rahul Sharma</h5>
                                 <span>AI Systems Engineer</span>
                             </div>
                         </div>
-                        <div class="company-logo-pill">
-                            <i class="fab fa-amazon"></i> Placed at Amazon
-                        </div>
+                        <div class="company-logo-pill"><i class="fab fa-amazon"></i> Amazon</div>
                     </div>
-                </div>
-                <div class="alumni-card">
-                    <span class="success-badge">Highest Hike: 250%</span>
-                    <p class="alumni-quote">"building professional microservices architecture in the 'Build Lab' gave me an edge during Google's system design interviews. Highly recommended!"</p>
-                    <div>
+                    <div class="alumni-card">
+                        <span class="success-badge">Highest Hike: 250%</span>
+                        <p class="alumni-quote">"building professional microservices architecture in the 'Build Lab' cracked Google for me."</p>
                         <div class="alumni-profile">
-                            <img src="https://i.pravatar.cc/150?u=22" class="alumni-avatar" alt="Alumni">
+                            <img src="https://i.pravatar.cc/150?u=22" class="alumni-avatar">
                             <div class="alumni-info">
                                 <h5>Priya Mehta</h5>
-                                <span>Senior Software Engineer</span>
+                                <span>Senior Engineer</span>
                             </div>
                         </div>
-                        <div class="company-logo-pill">
-                            <i class="fab fa-google"></i> Placed at Google
-                        </div>
-                    </div>
-                </div>
-                <div class="alumni-card">
-                    <span class="success-badge">Campus Placed</span>
-                    <p class="alumni-quote">"Linkcode's placement cell didn't just give me interviews; they gave me a roadmap to success. The Agentic AI Counselor kept me on track every day."</p>
-                    <div>
-                        <div class="alumni-profile">
-                            <img src="https://i.pravatar.cc/150?u=32" class="alumni-avatar" alt="Alumni">
-                            <div class="alumni-info">
-                                <h5>Vikram Singh</h5>
-                                <span>Full Stack Developer</span>
-                            </div>
-                        </div>
-                        <div class="company-logo-pill">
-                            <i class="fab fa-microsoft"></i> Placed at Microsoft
-                        </div>
+                        <div class="company-logo-pill"><i class="fab fa-google"></i> Google</div>
                     </div>
                 </div>
             </div>
         </section>
 
+        <!-- SECTION: Featured Programs -->
+        <section id="courses" class="section bg-white">
+            <div class="container">
+                <span class="section-subtitle">The Academy</span>
+                <h2 class="section-title">Featured Career Programs</h2>
+                <div id="course-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px;">
+                    <!-- Dynamically populated -->
+                </div>
+            </div>
+        </section>
     </main>
 
-    <section id="contact" class="contact-section">
-        <div class="contact-grid">
-            <div class="contact-info">
-                <h3>Contact Us</h3>
-                <div class="contact-item">
-                    <i class="fas fa-location-dot"></i>
-                    <span>123, Tech Park, Linkcode Road, Pune, India</span>
+    <!-- SECTION: Footer/Contact -->
+    <footer id="contact" class="section bg-white" style="border-top: 1px solid var(--glass-border);">
+        <div class="container">
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <h3>Official Headquarters</h3>
+                    <div class="contact-item"><i class="fas fa-location-dot"></i> 123, Tech Park, Pune</div>
+                    <div class="contact-item"><i class="fas fa-phone"></i> +91 98765 43210</div>
+                    <div class="contact-item"><i class="fas fa-envelope"></i> support@linkcode.tech</div>
                 </div>
-                <div class="contact-item">
-                    <i class="fas fa-phone"></i>
-                    <span>+91 98765 43210</span>
-                </div>
-                <div class="contact-item">
-                    <i class="fas fa-envelope"></i>
-                    <span>support@linkcode.tech</span>
+                <div class="contact-form-container glass" style="padding: 40px; border-radius: 20px;">
+                    <form id="bottom-contact-form" style="display: flex; flex-direction: column; gap: 20px;">
+                        <input type="text" placeholder="Full Name" required style="padding: 12px; border: 1px solid #ddd; border-radius: 8px;">
+                        <input type="email" placeholder="Email Address" required style="padding: 12px; border: 1px solid #ddd; border-radius: 8px;">
+                        <button type="submit" class="btn-primary">Submit Application</button>
+                    </form>
                 </div>
             </div>
-            <div class="contact-form-container"
-                style="background: #fdfdfd; padding: 40px; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); border: 1px solid var(--glass-border);">
-                <h3 style="margin-bottom: 30px; letter-spacing: 1px; color: #212529; text-transform: uppercase;">CONTACT
-                    US</h3>
-                <form id="bottom-contact-form" style="display: flex; flex-direction: column; gap: 20px;">
-                    <div style="display: flex; align-items: center; justify-content: space-between;">
-                        <label style="width: 140px; font-weight: 700; color: #4a4a4a; font-size: 0.95rem;">Name <span
-                                style="color:#d93025;">*</span></label>
-                        <input type="text" required
-                            style="flex: 1; padding: 10px; border: 1px solid #ccc; border-radius: 3px; outline: none;">
-                    </div>
-                    <div style="display: flex; align-items: center; justify-content: space-between;">
-                        <label style="width: 140px; font-weight: 700; color: #4a4a4a; font-size: 0.95rem;">Email ID
-                            <span style="color:#d93025;">*</span></label>
-                        <input type="email" required
-                            style="flex: 1; padding: 10px; border: 1px solid #ccc; border-radius: 3px; outline: none;">
-                    </div>
-                    <div style="display: flex; align-items: center; justify-content: space-between;">
-                        <label style="width: 140px; font-weight: 700; color: #4a4a4a; font-size: 0.95rem;">Contact No
-                            <span style="color:#d93025;">*</span></label>
-                        <input type="tel" required
-                            style="flex: 1; padding: 10px; border: 1px solid #ccc; border-radius: 3px; outline: none;">
-                    </div>
-                    <div style="display: flex; align-items: center; justify-content: space-between;">
-                        <label style="width: 140px; font-weight: 700; color: #4a4a4a; font-size: 0.95rem;">Mode of
-                            Training <span style="color:#d93025;">*</span></label>
-                        <select required
-                            style="flex: 1; padding: 10px; border: 1px solid #ccc; border-radius: 3px; outline: none; background: white;">
-                            <option value="Online Training">Online Training</option>
-                            <option value="Offline Training">Offline Training</option>
-                        </select>
-                    </div>
-                    <div style="display: flex; align-items: center; justify-content: space-between;">
-                        <label
-                            style="width: 140px; font-weight: 700; color: #4a4a4a; font-size: 0.95rem;">Location</label>
-                        <input type="text"
-                            style="flex: 1; padding: 10px; border: 1px solid #ccc; border-radius: 3px; outline: none;">
-                    </div>
-                    <div style="display: flex; align-items: center; justify-content: space-between;">
-                        <label style="width: 140px; font-weight: 700; color: #4a4a4a; font-size: 0.95rem;">Course <span
-                                style="color:#d93025;">*</span></label>
-                        <input type="text" required
-                            style="flex: 1; padding: 10px; border: 1px solid #ccc; border-radius: 3px; outline: none;">
-                    </div>
-                    <div style="display: flex; justify-content: center; margin-top: 25px;">
-                        <button type="submit"
-                            style="background: var(--primary); color: white; border: none; padding: 12px 35px; font-weight: 800; font-size: 1rem; border-radius: 3px; cursor: pointer; letter-spacing: 2px; transition: background 0.3s ease;"
-                            onmouseover="this.style.background='var(--primary-hover)'"
-                            onmouseout="this.style.background='var(--primary)'">SUBMIT</button>
-                    </div>
-                </form>
+            <div style="text-align: center; margin-top: 50px; color: var(--text-muted); font-size: 0.85rem;">
+                &copy; 2026 Linkcode Technologies. Licensed & Authorized AI Academy.
             </div>
         </div>
-        <div style="text-align: center; margin-top: 50px; color: var(--text-muted); font-size: 0.8rem;">
-            &copy; 2026 Linkcode Technologies. All Rights Reserved.
-        </div>
-    </section>
+    </footer>
 
     <!-- Detailed Course Modal -->
     <div id="course-modal" class="modal-overlay">
