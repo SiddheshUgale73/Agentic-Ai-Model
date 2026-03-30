@@ -8,7 +8,7 @@ from pydantic import BaseModel
 from typing import List
 
 # Import simplified service
-from app.schemas import QueryRequest, QueryResponse, UploadResponse
+from app.schemas import QueryRequest, QueryResponse, UploadResponse, Enrollment
 from app.services import rag_pipeline, settings
 from app.agent import agent_service
 
@@ -42,6 +42,14 @@ async def get_courses():
             for row in reader:
                 courses.append(row)
     return courses
+
+@app.get("/api/enrollments")
+async def get_enrollments():
+    """Returns the list of enrollments."""
+    if os.path.exists("data/enrollments.json"):
+        with open("data/enrollments.json", 'r') as f:
+            return json.load(f)
+    return []
 
 @app.post("/upload", response_model=UploadResponse)
 async def upload_document(background_tasks: BackgroundTasks, file: UploadFile = File(...)):

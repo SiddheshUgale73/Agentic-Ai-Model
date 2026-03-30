@@ -13,3 +13,9 @@ class UploadResponse(BaseModel):
     filename: str
     status: str
     message: str
+
+class Enrollment(BaseModel):
+    student_name: str
+    course_name: str
+    email: str
+    phone: Optional[str] = None

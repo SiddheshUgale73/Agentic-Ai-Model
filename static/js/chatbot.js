@@ -33,6 +33,10 @@ class ChatWidget {
             if (e.key === 'Enter') this.sendMessage();
         });
 
+        // Voice Message
+        const voiceBtn = document.getElementById('chat-voice');
+        if (voiceBtn) voiceBtn.addEventListener('click', () => this.startVoiceRecognition());
+
         // Modal Close
         const modal = document.getElementById('course-modal');
         const closeBtn = document.querySelector('.close-modal');
@@ -148,6 +152,43 @@ class ChatWidget {
             if (loadingMsg.parentNode) this.messagesContainer.removeChild(loadingMsg);
             this.addMessage("I'm sorry, I'm having trouble connecting to my brain right now. Please try again later.", 'bot');
         }
+    }
+
+    startVoiceRecognition() {
+        if (!('webkitSpeechRecognition' in window) && !('SpeechRecognition' in window)) {
+            alert('Voice recognition is not supported in this browser.');
+            return;
+        }
+
+        const recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
+        recognition.lang = 'en-US';
+        recognition.interimResults = false;
+        recognition.maxAlternatives = 1;
+
+        recognition.onstart = () => {
+            const voiceBtn = document.getElementById('chat-voice');
+            voiceBtn.innerHTML = '<i class="fas fa-stop"></i>';
+            voiceBtn.style.color = 'red';
+        };
+
+        recognition.onresult = (event) => {
+            const transcript = event.results[0][0].transcript;
+            this.input.value = transcript;
+            this.sendMessage();
+        };
+
+        recognition.onerror = (event) => {
+            console.error('Voice recognition error:', event.error);
+            this.addMessage("Sorry, I couldn't hear you. Please try again or type your message.", 'bot');
+        };
+
+        recognition.onend = () => {
+            const voiceBtn = document.getElementById('chat-voice');
+            voiceBtn.innerHTML = '<i class="fas fa-microphone"></i>';
+            voiceBtn.style.color = 'var(--chat-primary)';
+        };
+
+        recognition.start();
     }
 
     async fetchCourses() {
