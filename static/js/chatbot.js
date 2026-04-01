@@ -49,9 +49,13 @@ class ChatWidget {
         const chatCloseBtn = document.querySelector('.close-chat-btn');
         if (chatCloseBtn) chatCloseBtn.addEventListener('click', () => this.toggle(false));
 
-        // Submit Intake Form
-        const intakeForm = document.getElementById('intake-form');
-        if (intakeForm) {
+        // Ensure Screen 1 is visible and others are hidden on start
+        const welcomeScreen = document.getElementById('chat-screen-welcome');
+        const intakeScreen = document.getElementById('chat-screen-intake');
+        const activeScreen = document.getElementById('chat-screen-active');
+        if (welcomeScreen) welcomeScreen.style.display = 'flex';
+        if (intakeScreen) intakeScreen.style.display = 'none';
+        if (activeScreen) activeScreen.style.display = 'none';
             intakeForm.addEventListener('submit', (e) => {
                 e.preventDefault();
                 const msg = document.getElementById('intake-msg').value.trim();
@@ -197,22 +201,23 @@ class ChatWidget {
     }
 
     async fetchCourses() {
-        console.log("Fetching courses...");
+        console.log("Attempting to load courses...");
         try {
-            // Using a relative path that works better in different environments
-            const response = await fetch('./api/courses').catch(() => { throw new Error('Network error'); });
+            // Using a full URL to handle file:// protocols more gracefully or a safer relative path
+            const response = await fetch('./api/courses').catch(() => {
+                throw new Error('CORS or Network error - Fallback active');
+            });
             
             if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
             
             const courses = await response.json();
-            console.log("Courses loaded from API:", courses);
             this.courses = courses; 
             this.renderCourses(courses);
         } catch (error) {
-            console.warn('Backend API unavailable or blocked (CORS). Using premium fallback courses.', error);
-            const fallbackCourses = this.getFallbackCourses();
-            this.courses = fallbackCourses;
-            this.renderCourses(fallbackCourses);
+            console.warn('API Unreachable. Rendering fallback courses.', error);
+            const fallback = this.getFallbackCourses();
+            this.courses = fallback;
+            this.renderCourses(fallback);
         }
     }
 
