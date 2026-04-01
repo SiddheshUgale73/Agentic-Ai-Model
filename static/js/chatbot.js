@@ -93,25 +93,30 @@ class ChatWidget {
     addMessage(text, role) {
         const msgDiv = document.createElement('div');
         msgDiv.className = `message ${role}`;
-        msgDiv.style.cssText = `
-            padding: 12px 18px;
-            border-radius: ${role === 'user' ? '18px 18px 4px 18px' : '4px 18px 18px 18px'};
-            max-width: 80%;
-            font-size: 0.95rem;
-            margin-bottom: 2px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.04);
-            ${role === 'user' ? 'align-self: flex-end; background: var(--chat-primary); color: white;' : 'align-self: flex-start; background: #ffffff; color: var(--text-main); border: 1px solid var(--glass-border);'}
-            animation: fadeInUp 0.3s ease;
-        `;
-
-        // Add a subtle name label for user
+        
+        // Let CSS handle the base styling, only add specific classes if needed
+        // Or keep the dynamic part if it's very specific, but here we can use classes
+        
         if (role === 'user') {
             const label = document.createElement('div');
             label.textContent = "you";
+            label.className = "message-label user-label"; // Ensure these are in CSS or just use utility
             label.style.cssText = 'align-self: flex-end; font-size: 0.75rem; color: var(--text-muted); margin-bottom: 2px; margin-right: 5px;';
             this.messagesContainer.appendChild(label);
         }
+
         msgDiv.textContent = text;
+        
+        // Apply classes instead of raw CSS
+        msgDiv.classList.add('chat-bubble-msg');
+        if (role === 'user') {
+            msgDiv.classList.add('user-msg');
+            msgDiv.style.cssText = 'padding: 12px 18px; border-radius: 18px 18px 4px 18px; max-width: 80%; font-size: 0.95rem; margin-bottom: 2px; align-self: flex-end; background: var(--chat-primary); color: white; animation: fadeInUp 0.3s ease;';
+        } else {
+            msgDiv.classList.add('bot-msg');
+            msgDiv.style.cssText = 'padding: 12px 18px; border-radius: 4px 18px 18px 18px; max-width: 80%; font-size: 0.95rem; margin-bottom: 2px; align-self: flex-start; background: #ffffff; color: var(--text-main); border: 1px solid var(--glass-border); animation: fadeInUp 0.3s ease;';
+        }
+        
         this.messagesContainer.appendChild(msgDiv);
         this.messagesContainer.scrollTop = this.messagesContainer.scrollHeight;
     }
@@ -209,8 +214,7 @@ class ChatWidget {
         container.innerHTML = '';
         courses.forEach(course => {
             const card = document.createElement('div');
-            card.className = 'glass';
-            card.style.cssText = 'padding: 30px; border-radius: 20px; transition: var(--transition); border: 1px solid var(--glass-border); cursor: pointer;';
+            card.className = 'course-card';
             card.onclick = () => this.showModal(course);
 
             card.innerHTML = `
@@ -219,9 +223,9 @@ class ChatWidget {
                     <span class="rating-value">${course.rating}</span>
                 </div>
                 <i class="fas ${this.getCourseIcon(course.name)}" style="font-size: 2rem; color: var(--primary); margin-bottom: 20px;"></i>
-                <h3 style="margin-bottom: 10px;">${course.name}</h3>
+                <h3>${course.name}</h3>
                 <p style="color: var(--text-muted); margin-bottom: 15px; font-size: 0.9rem;">${course.duration_months} Months | Intensive Training</p>
-                <div style="display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--glass-border); padding-top: 15px; margin-top: 15px;">
+                <div class="flex justify-between items-center" style="border-top: 1px solid var(--glass-border); padding-top: 15px; margin-top: 15px;">
                     <span style="font-size: 0.8rem; color: var(--primary); font-weight: 600;">LEARN MORE <i class="fas fa-arrow-right" style="font-size: 0.7rem; margin-left: 5px;"></i></span>
                     <span style="font-size: 0.8rem; color: var(--text-muted);">${course.status}</span>
                 </div>
@@ -233,6 +237,9 @@ class ChatWidget {
     showModal(course) {
         const modal = document.getElementById('course-modal');
         const body = document.getElementById('modal-body');
+        
+        modal.classList.add('flex'); // Add flex to center the content
+        modal.style.display = 'flex';
 
         body.innerHTML = `
             <h2>${course.name}</h2>
@@ -243,9 +250,9 @@ class ChatWidget {
                 <div class="feature-item"><i class="fas fa-clock" style="color: var(--primary);"></i> ${course.duration_months} Months Duration</div>
                 <div class="feature-item"><i class="fas fa-laptop-code" style="color: var(--primary);"></i> ${course.format} Mode</div>
             </div>
-            <div style="display: flex; gap: 15px;">
-                <button id="enroll-btn" class="btn-primary" style="border: none; cursor: pointer; flex: 1;">Enroll Now</button>
-                <button onclick="document.getElementById('course-modal').style.display='none'" class="glass" style="flex: 1; padding: 10px; border-radius: 99px; color: var(--text-main); border: 1px solid var(--glass-border);">Close</button>
+            <div class="flex gap-20">
+                <button id="enroll-btn" class="btn-primary w-full">Enroll Now</button>
+                <button onclick="document.getElementById('course-modal').style.display='none'" class="glass w-full" style="padding: 10px; border-radius: 99px; color: var(--text-main); border: 1px solid var(--glass-border);">Close</button>
             </div>
         `;
 
@@ -254,8 +261,6 @@ class ChatWidget {
             this.toggle(true);
             this.sendMessage(`I want to enroll in ${course.name}. Can you tell me the process and fees?`);
         };
-
-        modal.style.display = 'flex';
     }
 
     renderStars(rating) {
