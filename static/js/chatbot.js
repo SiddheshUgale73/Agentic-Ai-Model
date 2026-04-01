@@ -20,18 +20,24 @@ class ChatWidget {
 
     init() {
         // Toggle Chat
-        this.bubble.addEventListener('click', () => {
-            const badge = document.getElementById('chat-badge');
-            if (badge) badge.style.display = 'none'; // Hide badge when clicked
-            this.bubble.style.animation = 'none'; // Stop bounce
-            this.toggle();
-        });
+        if (this.bubble) {
+            this.bubble.addEventListener('click', () => {
+                const badge = document.getElementById('chat-badge');
+                if (badge) badge.style.display = 'none';
+                this.bubble.style.animation = 'none';
+                this.toggle();
+            });
+        }
 
         // Send Message
-        this.sendBtn.addEventListener('click', () => this.sendMessage());
-        this.input.addEventListener('keypress', (e) => {
-            if (e.key === 'Enter') this.sendMessage();
-        });
+        if (this.sendBtn) {
+            this.sendBtn.addEventListener('click', () => this.sendMessage());
+        }
+        if (this.input) {
+            this.input.addEventListener('keypress', (e) => {
+                if (e.key === 'Enter') this.sendMessage();
+            });
+        }
 
         // Voice Message
         const voiceBtn = document.getElementById('chat-voice');
@@ -49,44 +55,46 @@ class ChatWidget {
         const chatCloseBtn = document.querySelector('.close-chat-btn');
         if (chatCloseBtn) chatCloseBtn.addEventListener('click', () => this.toggle(false));
 
-        // Ensure Screen 1 is visible and others are hidden on start
+        // Reset Screens to Welcome on start
         const welcomeScreen = document.getElementById('chat-screen-welcome');
         const intakeScreen = document.getElementById('chat-screen-intake');
         const activeScreen = document.getElementById('chat-screen-active');
         if (welcomeScreen) welcomeScreen.style.display = 'flex';
         if (intakeScreen) intakeScreen.style.display = 'none';
         if (activeScreen) activeScreen.style.display = 'none';
+
+        // Submit Intake Form
+        const intakeForm = document.getElementById('intake-form');
+        if (intakeForm) {
             intakeForm.addEventListener('submit', (e) => {
                 e.preventDefault();
                 const msg = document.getElementById('intake-msg').value.trim();
 
                 // Switch Screens
-                document.getElementById('chat-screen-intake').style.display = 'none';
-                document.getElementById('chat-screen-active').style.display = 'flex';
+                if (intakeScreen) intakeScreen.style.display = 'none';
+                if (activeScreen) activeScreen.style.display = 'flex';
 
-                // Add Initial Bot Message matching original screenshot
+                // Add Initial Bot Message
                 this.addMessage("Welcome to Linkcode Technologies. We are happy to help you.", 'bot');
 
                 if (msg) {
                     this.sendMessage(msg);
                 }
             });
-
-            // Auto-notification after 5 seconds to grab user attention
-            setTimeout(() => {
-                if (!this.container.classList.contains('active')) {
-                    const badge = document.getElementById('chat-badge');
-                    if (badge) badge.style.display = 'block';
-                    this.bubble.style.animation = 'chatBounce 2s ease 2';
-                }
-            }, 5000);
         }
 
-        // Disable initial trigger since we do it on form submit now
-        // this.addMessage("Hello! I'm your Linkcode Technologies Counselor. How can I help you today?", 'bot');
+        // Auto-notification after 5 seconds
+        setTimeout(() => {
+            if (this.container && !this.container.classList.contains('active')) {
+                const badge = document.getElementById('chat-badge');
+                if (badge) badge.style.display = 'block';
+                if (this.bubble) this.bubble.style.animation = 'chatBounce 2s ease 2';
+            }
+        }, 5000);
     }
 
     toggle(forceOpen = false) {
+        if (!this.container) return;
         if (forceOpen) {
             this.container.classList.add('active');
         } else {
@@ -95,24 +103,20 @@ class ChatWidget {
     }
 
     addMessage(text, role) {
-        const msgDiv = document.createElement('div');
-        msgDiv.className = `message ${role}`;
-        
-        // Let CSS handle the base styling, only add specific classes if needed
-        // Or keep the dynamic part if it's very specific, but here we can use classes
+        if (!this.messagesContainer) return;
         
         if (role === 'user') {
             const label = document.createElement('div');
             label.textContent = "you";
-            label.className = "message-label user-label"; // Ensure these are in CSS or just use utility
+            label.className = "message-label user-label";
             label.style.cssText = 'align-self: flex-end; font-size: 0.75rem; color: var(--text-muted); margin-bottom: 2px; margin-right: 5px;';
             this.messagesContainer.appendChild(label);
         }
 
+        const msgDiv = document.createElement('div');
+        msgDiv.className = `message ${role} chat-bubble-msg`;
         msgDiv.textContent = text;
         
-        // Apply classes instead of raw CSS
-        msgDiv.classList.add('chat-bubble-msg');
         if (role === 'user') {
             msgDiv.classList.add('user-msg');
             msgDiv.style.cssText = 'padding: 12px 18px; border-radius: 18px 18px 4px 18px; max-width: 80%; font-size: 0.95rem; margin-bottom: 2px; align-self: flex-end; background: var(--chat-primary); color: white; animation: fadeInUp 0.3s ease;';
@@ -129,7 +133,7 @@ class ChatWidget {
         const query = prefillQuery || this.input.value.trim();
         if (!query) return;
 
-        if (!prefillQuery) this.input.value = '';
+        if (!prefillQuery && this.input) this.input.value = '';
         this.addMessage(query, 'user');
 
         const loadingMsg = document.createElement('div');
@@ -149,7 +153,7 @@ class ChatWidget {
             });
 
             const data = await response.json();
-            this.messagesContainer.removeChild(loadingMsg);
+            if (loadingMsg.parentNode) this.messagesContainer.removeChild(loadingMsg);
 
             if (data.answer) {
                 this.addMessage(data.answer, 'bot');
@@ -176,13 +180,15 @@ class ChatWidget {
 
         recognition.onstart = () => {
             const voiceBtn = document.getElementById('chat-voice');
-            voiceBtn.innerHTML = '<i class="fas fa-stop"></i>';
-            voiceBtn.style.color = 'red';
+            if (voiceBtn) {
+                voiceBtn.innerHTML = '<i class="fas fa-stop"></i>';
+                voiceBtn.style.color = 'red';
+            }
         };
 
         recognition.onresult = (event) => {
             const transcript = event.results[0][0].transcript;
-            this.input.value = transcript;
+            if (this.input) this.input.value = transcript;
             this.sendMessage();
         };
 
@@ -193,8 +199,10 @@ class ChatWidget {
 
         recognition.onend = () => {
             const voiceBtn = document.getElementById('chat-voice');
-            voiceBtn.innerHTML = '<i class="fas fa-microphone"></i>';
-            voiceBtn.style.color = 'var(--chat-primary)';
+            if (voiceBtn) {
+                voiceBtn.innerHTML = '<i class="fas fa-microphone"></i>';
+                voiceBtn.style.color = 'var(--chat-primary)';
+            }
         };
 
         recognition.start();
@@ -203,7 +211,6 @@ class ChatWidget {
     async fetchCourses() {
         console.log("Attempting to load courses...");
         try {
-            // Using a full URL to handle file:// protocols more gracefully or a safer relative path
             const response = await fetch('./api/courses').catch(() => {
                 throw new Error('CORS or Network error - Fallback active');
             });
@@ -280,8 +287,9 @@ class ChatWidget {
     showModal(course) {
         const modal = document.getElementById('course-modal');
         const body = document.getElementById('modal-body');
+        if (!modal || !body) return;
         
-        modal.classList.add('flex'); // Add flex to center the content
+        modal.classList.add('flex');
         modal.style.display = 'flex';
 
         body.innerHTML = `
@@ -299,11 +307,14 @@ class ChatWidget {
             </div>
         `;
 
-        document.getElementById('enroll-btn').onclick = () => {
-            modal.style.display = 'none';
-            this.toggle(true);
-            this.sendMessage(`I want to enroll in ${course.name}. Can you tell me the process and fees?`);
-        };
+        const enrollBtn = document.getElementById('enroll-btn');
+        if (enrollBtn) {
+            enrollBtn.onclick = () => {
+                modal.style.display = 'none';
+                this.toggle(true);
+                this.sendMessage(`I want to enroll in ${course.name}. Can you tell me the process and fees?`);
+            };
+        }
     }
 
     renderStars(rating) {
@@ -329,60 +340,67 @@ class ChatWidget {
 // Initialize when DOM is ready
 document.addEventListener('DOMContentLoaded', () => {
     const chat = new ChatWidget();
-    window.currentChatInstance = chat; // Expose for landing page triggers
-    chat.fetchCourses(); // Load dynamic courses
+    window.currentChatInstance = chat;
+    chat.fetchCourses();
 
     // Header scroll effect
     window.addEventListener('scroll', () => {
         const header = document.querySelector('header');
-        if (window.scrollY > 50) {
-            header.classList.add('scrolled');
-        } else {
-            header.classList.remove('scrolled');
+        if (header) {
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
         }
     });
 
-    // Global Triggers for Landing Page
+    // Global Triggers
     window.triggerRoadmap = (goal = "Tech Career") => {
         const chat = window.currentChatInstance;
         if (!chat) return;
-
-        // Force open
         chat.toggle(true);
 
         const welcomeScreen = document.getElementById('chat-screen-welcome');
         const intakeScreen = document.getElementById('chat-screen-intake');
         const activeScreen = document.getElementById('chat-screen-active');
 
-        if (activeScreen.style.display === 'flex') {
-            // Already in active chat
+        if (activeScreen && activeScreen.style.display === 'flex') {
             chat.sendMessage(`I need a personalized career roadmap for a career in ${goal}. Can you provide a step-by-step 6-month plan?`);
         } else {
-            // Go to intake
-            welcomeScreen.style.display = 'none';
-            intakeScreen.style.display = 'flex';
-            document.getElementById('intake-msg').value = `I want to generate a personalized career roadmap for ${goal}.`;
-            document.getElementById('intake-msg').focus();
+            if (welcomeScreen) welcomeScreen.style.display = 'none';
+            if (intakeScreen) {
+                intakeScreen.style.display = 'flex';
+                const intakeMsgInput = document.getElementById('intake-msg');
+                if (intakeMsgInput) {
+                    intakeMsgInput.value = `I want to generate a personalized career roadmap for ${goal}.`;
+                    intakeMsgInput.focus();
+                }
+            }
         }
     };
 
     window.triggerAssessment = () => {
         const chat = window.currentChatInstance;
         if (!chat) return;
-
         chat.toggle(true);
+
         const welcomeScreen = document.getElementById('chat-screen-welcome');
         const intakeScreen = document.getElementById('chat-screen-intake');
         const activeScreen = document.getElementById('chat-screen-active');
 
-        if (activeScreen.style.display === 'flex') {
+        if (activeScreen && activeScreen.style.display === 'flex') {
             chat.sendMessage("I want to start a skills assessment to see which course fits me best.");
         } else {
-            welcomeScreen.style.display = 'none';
-            intakeScreen.style.display = 'flex';
-            document.getElementById('intake-msg').value = "I want to start a skills assessment.";
-            document.getElementById('intake-msg').focus();
+            if (welcomeScreen) welcomeScreen.style.display = 'none';
+            if (intakeScreen) {
+                intakeScreen.style.display = 'flex';
+                const intakeMsgInput = document.getElementById('intake-msg');
+                if (intakeMsgInput) {
+                    intakeMsgInput.value = "I want to start a skills assessment.";
+                    intakeMsgInput.focus();
+                }
+            }
         }
     };
 });
-
