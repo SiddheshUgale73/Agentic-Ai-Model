@@ -199,12 +199,45 @@ class ChatWidget {
     async fetchCourses() {
         try {
             const response = await fetch('/api/courses');
+            if (!response.ok) throw new Error('API unreachable');
             const courses = await response.json();
-            this.courses = courses; // Store globally
+            this.courses = courses; 
             this.renderCourses(courses);
         } catch (error) {
-            console.error('Failed to fetch courses:', error);
+            console.warn('Backend API unreachable, using fallback courses.', error);
+            const fallbackCourses = this.getFallbackCourses();
+            this.courses = fallbackCourses;
+            this.renderCourses(fallbackCourses);
         }
+    }
+
+    getFallbackCourses() {
+        return [
+            {
+                name: "Agentic AI Mastery",
+                duration_months: 6,
+                rating: 4.9,
+                status: "Open",
+                description: "Master autonomous AI agents, multi-agent systems, and production LLM orchestration.",
+                format: "Hybrid"
+            },
+            {
+                name: "Full Stack Data Science",
+                duration_months: 8,
+                rating: 4.8,
+                status: "Enrolling",
+                description: "End-to-end data pipelines, ML engineering, and advanced analytics for modern enterprises.",
+                format: "Online"
+            },
+            {
+                name: "Cyber Security Plus",
+                duration_months: 4,
+                rating: 4.7,
+                status: "Active",
+                description: "Offensive and defensive security strategies, penetration testing, and ethical hacking certificates.",
+                format: "On-Campus"
+            }
+        ];
     }
 
     renderCourses(courses) {

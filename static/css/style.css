@@ -60,6 +60,7 @@ body {
     color: var(--text-dark);
     line-height: 1.7;
     overflow-x: hidden;
+    padding-top: 80px; /* Offset for fixed header */
 }
 
 .container {
@@ -469,6 +470,7 @@ header.scrolled {
     right: 0; 
     width: 380px; 
     height: 600px; 
+    max-height: calc(100vh - 120px); /* Ensure it fits in small viewports */
     border-radius: 12px; 
     background: #fff; 
     box-shadow: var(--chat-shadow); 
@@ -480,6 +482,7 @@ header.scrolled {
     pointer-events: none; 
     transition: var(--transition);
     border: none;
+    top: auto; /* Force bottom anchoring */
 }
 
 #chat-window.active { 
