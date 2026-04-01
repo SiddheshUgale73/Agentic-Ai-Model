@@ -469,8 +469,8 @@ header.scrolled {
     bottom: 85px; 
     right: 0; 
     width: 380px; 
-    height: 600px; 
-    max-height: calc(100vh - 120px); /* Ensure it fits in small viewports */
+    height: min(600px, calc(100vh - 120px)); 
+    max-height: calc(100vh - 120px); 
     border-radius: 12px; 
     background: #fff; 
     box-shadow: var(--chat-shadow); 

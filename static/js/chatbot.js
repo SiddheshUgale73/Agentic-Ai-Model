@@ -197,14 +197,19 @@ class ChatWidget {
     }
 
     async fetchCourses() {
+        console.log("Fetching courses...");
         try {
-            const response = await fetch('/api/courses');
-            if (!response.ok) throw new Error('API unreachable');
+            // Using a relative path that works better in different environments
+            const response = await fetch('./api/courses').catch(() => { throw new Error('Network error'); });
+            
+            if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+            
             const courses = await response.json();
+            console.log("Courses loaded from API:", courses);
             this.courses = courses; 
             this.renderCourses(courses);
         } catch (error) {
-            console.warn('Backend API unreachable, using fallback courses.', error);
+            console.warn('Backend API unavailable or blocked (CORS). Using premium fallback courses.', error);
             const fallbackCourses = this.getFallbackCourses();
             this.courses = fallbackCourses;
             this.renderCourses(fallbackCourses);
