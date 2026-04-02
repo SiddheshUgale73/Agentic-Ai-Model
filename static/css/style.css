@@ -45,7 +45,7 @@
 .w-full { width: 100%; }
 .mt-50 { margin-top: 50px; }
 .relative { position: relative; }
-.hidden { display: none !important; }
+.hidden { display: none; }
 .cursor-pointer { cursor: pointer; }
 
 /* --- RESET & CORE GRID --- */
