@@ -43,6 +43,8 @@
 .gap-20 { gap: 20px; }
 .text-center { text-align: center; }
 .w-full { width: 100%; }
+.h-full { height: 100%; }
+.flex-1 { flex: 1; }
 .mt-50 { margin-top: 50px; }
 .relative { position: relative; }
 .hidden { display: none; }
@@ -497,20 +499,22 @@ header.scrolled {
     width: 110px;
     height: 110px;
     background: white;
-    border-radius: 50%;
+    border-radius: var(--radius-soft);
     position: absolute;
     top: -55px;
     left: 50%;
     transform: translateX(-50%);
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
     display: flex;
     justify-content: center;
     align-items: center;
+    padding: 10px;
 }
 
 .chat-avatar-large img {
-    width: 80%;
-    border-radius: 50%;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
 }
 
 .chat-welcome-content {
