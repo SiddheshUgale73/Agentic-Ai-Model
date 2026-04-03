@@ -120,7 +120,7 @@ class LLMProvider:
         self.model = "llama-3.1-8b-instant"
 
     def generate(self, context: str, question: str) -> str:
-        prompt = f"Context:\n{context}\n\nQuestion: {question}\n\nAnswer concisely based on the context above."
+        prompt = f"Context:\n{context}\n\nQuestion: {question}\n\nAnswer EXTREMELY concisely (1-2 sentences max) based ONLY on the context above."
         try:
             completion = self.client.chat.completions.create(
                 model=self.model,
