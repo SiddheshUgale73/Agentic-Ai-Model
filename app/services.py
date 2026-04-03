@@ -107,7 +107,7 @@ class VectorStore:
         with open(self.chunks_path, "w", encoding="utf-8") as f:
             json.dump(self.text_chunks, f, ensure_ascii=False)
 
-    def query(self, question: str, top_k: int = 5) -> List[str]:
+    def query(self, question: str, top_k: int = 3) -> List[str]:
         query_emb = self.model.encode([question], convert_to_numpy=True).astype('float32')
         _, indices = self.index.search(query_emb, top_k)
         return [self.text_chunks[idx] for idx in indices[0] if idx != -1 and idx < len(self.text_chunks)]
@@ -129,7 +129,10 @@ class LLMProvider:
             )
             return completion.choices[0].message.content
         except Exception as e:
-            logger.error(f"Groq Error: {str(e)}")
+            logger.error(f"GROQ CRITICAL ERROR: {str(e)}")
+            # Log to a temporary file for manual inspection if needed
+            with open("groq_error_log.txt", "a") as f:
+                f.write(f"\n--- ERROR ---\n{str(e)}\n")
             return "I'm sorry, I'm having trouble connecting to my brain right now."
 
 class RAGPipeline:
